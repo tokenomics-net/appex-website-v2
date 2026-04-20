@@ -45,6 +45,15 @@ export function TokenHero(): React.JSX.Element {
           }
         }
 
+        /* Mobile: section stacks as a column so the asset renders above the grid */
+        @media (max-width: 767px) {
+          .token-hero {
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 96px;
+          }
+        }
+
         /* Layer 0: r23-scene-token-utility.png at 100% opacity */
         .token-hero__scene {
           position: absolute;
@@ -134,12 +143,13 @@ export function TokenHero(): React.JSX.Element {
           align-items: center;
         }
 
-        @media (max-width: 1023px) {
+        /* Tablet (768-1023px): reduce side padding */
+        @media (max-width: 1023px) and (min-width: 768px) {
           .token-hero__grid { padding: 120px 32px 80px; }
         }
         @media (max-width: 767px) {
           .token-hero__grid {
-            padding: 96px 24px 72px;
+            padding: 28px 24px 72px;
             flex-direction: column;
             align-items: center;
           }
