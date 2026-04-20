@@ -1,0 +1,107 @@
+---
+title: "How borrower diligence protects the vault"
+slug: "how-borrower-diligence-protects-the-vault"
+excerpt: "Credit review, financial statements, background checks, and concentration limits are not gatekeeping. They are the reason LP capital is safe to deploy into active advances."
+date: "2026-03-27"
+author: "appeX Protocol"
+category: "borrowers"
+tags: ["borrowers", "onboarding", "risk", "credit", "concentration"]
+cover: "/images/r23-scene-trust.webp"
+coverAlt: "A layered trust scene rendered in magma-core material   structural diligence made visible."
+ctaRoute: "/borrowers"
+ctaLabel: "Apply for an advance"
+---
+
+Onboarding a borrower into an appeX vault is a credit decision, not a signup form. Financial statements get reviewed. Receivables get verified. Corporate identity and beneficial ownership get checked. Concentration limits get assigned before a single USDC moves. If that sounds like friction, it is worth asking what the friction is for and who it protects.
+
+The honest answer, and the thesis of this post, is that underwriting rigor is the single most important thing a protocol can do for both sides of the vault at once. It protects LPs from default risk they cannot underwrite themselves, and it protects borrowers from competing in a pool where standards drift downward over time. Diligence is the feature, not the filter.
+
+## What the review covers
+
+Every borrower clears a structured evaluation before any facility opens. There are four underwriting pillars, and each one exists for a specific reason.
+
+### 1. Financial statement review
+
+The credit assessment starts with the borrower's own financials: revenue history, margin structure, customer concentration, and cash position. Unlike traditional invoice-level factoring, the review focuses on the borrower's ability to repay, not on the creditworthiness of a downstream customer. This is a meaningful distinction. A borrower whose Net-120 customer is a creditworthy enterprise is still a risky borrower if the borrower's own operating business cannot weather a single-customer delay or default.
+
+The vault's counterparty is the borrowing company. Repayment is contractual, not conditional on customer performance. The financial review is the check that makes that contract real.
+
+### 2. Receivables verification
+
+The review also looks at the quality of the receivables being financed. A receivable is not uniformly safe. Industry norms differ. Payment velocity differs. Collection procedures differ. A borrower claiming to have ten million in receivables is different from a borrower whose receivables are documented, verifiable, and aged within a typical cycle for their industry.
+
+This is not a granular per-invoice audit of every receivable the borrower ever draws against. That would not scale. It is a documentary review at onboarding that establishes the profile, followed by periodic review of representative batches as the facility grows.
+
+### 3. Background and regulatory checks
+
+Every approved borrower clears corporate identity verification, beneficial ownership disclosure, and regulatory standing checks. A borrowing company is accepted into the vault when its ownership is verifiable and its regulatory posture is clean. This is a compliance bar that protects every LP in the vault and every other borrower in the pool.
+
+Pay-to-play access does not exist. A higher offered fee does not clear a borrower through background review. Either the facility passes the bar or it does not open.
+
+### 4. Concentration limits
+
+Each approved borrower is assigned limits capping how much of the vault's capital can sit in that single borrower's advances at any moment. Limits also apply per-customer (for borrowers whose own revenue is concentrated in a small number of downstream customers) and per-industry (to prevent a correlated default across borrowers exposed to the same sector shock).
+
+The recommended caps follow the pattern documented in the wiki:
+
+| Limit Type | Recommended Cap |
+|---|---|
+| Per-customer exposure | 20 to 25% of a borrower's outstanding advances |
+| Per-supplier exposure | 10 to 15% of outstanding advances |
+
+These are calibrated guidelines. They are not arbitrary. They exist so that a single default cannot determine the vault's outcome.
+
+## How concentration limits work in practice
+
+Consider a simplified vault with five approved borrowers and a hundred million in LP deposits. Without concentration limits, the vault could, in principle, end up with seventy percent of its capital committed to one borrower's facility. A default by that borrower would socialize a loss across every LP share in the vault, at a magnitude that no reasonable underwriting process could fully absorb.
+
+With a thirty-percent per-borrower cap, the worst-case single-default loss is bounded. Losses still hurt; loss math cannot be abolished. But the mechanism limits how much any one default can move vault NAV, which is the only number an LP really tracks over time.
+
+The same logic applies at the customer and industry tiers. A borrower whose revenue is forty percent dependent on one downstream customer is a riskier borrower than one whose revenue is evenly spread across twenty customers. An industry-level cap protects against scenarios where multiple approved borrowers share a common exposure (e.g., a handful of mobile-advertising borrowers whose revenue depends on the same set of advertisers).
+
+Limits are set at onboarding. They can be adjusted through governance as the vault matures and borrower mix diversifies.
+
+> Concentration limits are the difference between a vault where one default hurts and a vault where one default is fatal. Rigorous caps are LP protection disguised as borrower-side discipline.
+
+## What happens on default
+
+Every facility spells out the default path. The path is not a surprise when it triggers.
+
+**Grace period.** A five-day grace period applies after the scheduled repayment date. Yield accrual stops on the affected advance. NAV holds flat on that advance. The advance is flagged as overdue but not yet impaired.
+
+**After the grace period.** One of two outcomes:
+
+1. The borrower pays in full, late. NAV reflects the accrued yield through the paid-through date. All parties are whole, though the borrower has used up a notable portion of the trust account that goes into borrower prioritization when vault liquidity tightens.
+2. The borrower does not pay. Insurance, where available, applies first and can offset part of the loss. Remaining shortfall is written down against vault NAV and socialized across LP shares proportionally. The borrower permanently loses vault access.
+
+Borrower liability does not evaporate on default. The borrower still owes the vault for principal plus accrued fees, and collections proceed under the facility agreement. But the accounting does not wait for collections: the write-down lands on vault NAV in the period the loss is recognized, not in the period the recovery arrives.
+
+This is the honest number. Credit losses reduce NAV. No marketing claim around this changes that arithmetic. The argument for rigorous onboarding is that the arithmetic is legible and bounded, not that it never happens.
+
+## Why this is borrower protection, not friction
+
+It is easy to read underwriting as friction. It is a barrier to access, and barriers feel hostile when the borrower is the one standing in front of them. That reading misses what the underwriting actually protects.
+
+### It protects the borrower's customer relationship
+
+The credit focus stays on the borrowing company, not on its downstream customers. Customers are not pulled into vendor-finance diligence, background checks, or ongoing compliance monitoring. A customer never learns that their invoice was used as the basis of an advance. The relationship stays between the borrower and its customer, uncomplicated by third-party paperwork.
+
+### It protects the pool the borrower joins
+
+Every approved borrower is sitting next to other approved borrowers who cleared the same bar. There is no pay-to-play counterparty drift where the pool gradually degrades because a preferential rate got cut for a relationship hire. A pool where every borrower has verified identity, reviewed financials, and documented receivables is a pool a serious borrower wants to be part of, because their own facility terms compound on their standing in that pool.
+
+### It protects the margin
+
+Borrowing limit, payment term range, LP yield fee, and protocol fee rate are agreed together at onboarding. Rates vary per borrower based on risk, volume, and negotiated agreement, and then they hold. No invoice-level haggling, no quarterly repricing. The fee curve the borrower agrees to is the fee curve the borrower operates against.
+
+### It protects the facility over the long run
+
+A borrower's standing in the pool shapes draw access when vault liquidity tightens. Fee generation, payment velocity, $APPEX integration, and credit quality all feed into that standing. A borrower who treats the facility as a long-term partner, pays on time, integrates $APPEX, and communicates early on any friction, earns treatment from the vault that reflects that discipline. A borrower who does not, does not.
+
+## Diligence as the yield
+
+The argument from the LP side, which every approved borrower is ultimately standing in front of, is this: the underwriting is the yield. A vault that skipped underwriting to chase headline growth would post a higher TVL number for a quarter and then socialize a correlated loss across every LP share in the book. A vault that runs underwriting at a bar that actually sorts borrowers produces a yield number that holds up under scrutiny and reinvestment.
+
+Rigorous borrower diligence is the mechanism that makes LP capital safe enough to deploy into active advances. That is why the review is structured, why the bar is consistent, and why concentration limits are set before a facility opens. Borrowers who clear that bar are standing on the same floor LPs are. That alignment is what the vault is for.
+
+If an advance facility is the next step, the borrower page covers the process and the path in: [apply for an advance](/borrowers).

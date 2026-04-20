@@ -1,0 +1,116 @@
+---
+title: "How LPs earn from active lending"
+slug: "how-lps-earn-from-active-lending"
+excerpt: "The vault holds USDC. Borrowers draw against verified revenue. Fees accrue to vault NAV on a daily schedule. Here is the mechanic end to end."
+date: "2026-04-10"
+author: "appeX Protocol"
+category: "lps"
+tags: ["lp", "fee-structure", "nav", "mechanics"]
+cover: "/images/r28-scene-lp-horizon-open.webp"
+coverAlt: "An open LP horizon scene in magma-core material   earning from active lending."
+ctaRoute: "/lps"
+ctaLabel: "See how LPs earn"
+---
+
+LPs deposit USDC. Approved borrowers draw against verified receivables. Fees accrue to vault NAV on a daily schedule. LP token value rises with NAV. That is the whole mechanic, but the whole mechanic hides a lot of structural decisions that matter to anyone thinking about parking capital in the vault for a year. This post opens those decisions up.
+
+The argument is not that appeX pays the highest headline number. The argument is that every number an LP sees here has a counterparty, an accrual schedule, and a redemption structure that can be audited before a dollar is deposited. That is a different product than the one most DeFi lending pools are selling.
+
+## The vault as an accounting object
+
+A vault is a smart contract that holds USDC, issues LP tokens, tracks NAV, and releases capital to approved borrowers on documented terms. NAV per LP token is the only number an LP really needs to track over time, because NAV is how yield shows up.
+
+When an LP deposits, the vault refreshes NAV, calculates the current share price, and mints LP tokens at that price. A fresh deposit does not dilute anyone's yield and does not boost anyone's share. The math:
+
+```
+Share Price  = NAV / Total LP Tokens Outstanding
+Tokens Minted = Deposit Amount / Share Price
+```
+
+If NAV is one hundred thousand USDC and there are one hundred thousand LP tokens outstanding, the share price is one dollar. If a borrower then repays with ten thousand USDC in fees, NAV rises to one hundred ten thousand. The share price rises to $1.10. An LP who deposited ten thousand USDC on day one now holds tokens worth eleven thousand, without any claim step or gas cost.
+
+A new LP depositing ten thousand on day two buys in at the new share price, receiving roughly 9,091 tokens. Their entry price reflects yield that already accrued. They do not collect it retroactively.
+
+This is the single most important LP property of the vault: **deposits and withdrawals do not move share price. Only realized fees and bad-debt adjustments do.**
+
+## Where the fees come from
+
+Every active advance a borrower takes from the vault carries an LP yield fee, documented in the facility and accruing to NAV over the life of the advance. The fee is a single parameter per borrower, not a floating rate that reprices each invoice. Per the fee curve, rates scale linearly from five percent at Net-30 to fifteen percent at Net-180:
+
+| Payment Terms | LP Yield Fee | Capital Turns per Year | Illustrative Simple Annualized |
+|---|---|---|---|
+| Net-30 | 5.0% | ~12x | ~60% |
+| Net-60 | 7.0% | ~6x | ~42% |
+| Net-90 | 9.0% | ~4x | ~36% |
+| Net-120 | 11.0% | ~3x | ~33% |
+| Net-150 | 13.0% | ~2.4x | ~31% |
+| Net-180 | 15.0% | ~2x | ~30% |
+
+These figures are illustrative, not guaranteed returns. Actual results depend on vault utilization, the mix of borrower payment term durations, and gaps between advances. The capital-turns column is the single most load-bearing number in the table, because a vault that never gets back to zero utilization will not deliver the simple-annualized figure.
+
+The fee is the same whether the LP stakes $APPEX or not. Base yield is the baseline product. Staking adds a second, optional stream on top of the first, sourced from protocol fees rather than the LP yield fee. Staking is addressed at the end of this post.
+
+## A worked example: one advance, ninety days
+
+Mechanics read cleaner on a single example. Assume a borrower draws ten thousand USDC against a receivable on Net-90 terms, at a nine percent LP yield fee. The advance will earn nine hundred USDC of LP yield across the life of the advance, accruing daily:
+
+| Day | Daily Accrual | Cumulative |
+|---|---|---|
+| 1 | $10.00 | $10.00 |
+| 30 | $10.00 | $300.00 |
+| 60 | $10.00 | $600.00 |
+| 90 | $10.00 | $900.00 |
+
+On day one, NAV includes ten dollars of yield. On day ninety, NAV includes nine hundred dollars. Every day in between, NAV reflects the fraction of the fee that has actually accrued by that point. A new LP depositing on day thirty buys at the share price that reflects the three hundred dollars of yield already earned. They only benefit from the remaining six hundred.
+
+This is called accrual-based NAV accounting, and it is the thing that prevents late-entering LPs from free-riding on yield that long-standing LPs actually funded. Without accrual, an LP depositing on day eighty-nine would capture an equal share of the full nine hundred, even though their capital sat in the vault for one day. With accrual, the math is honest.
+
+On day ninety, the borrower repays principal plus nine hundred plus the negotiated protocol fee. The nine hundred was already in NAV, so nothing changes in share price. The protocol fee splits fifty-fifty between Treasury and stakers. The principal returns to the vault and becomes available for the next advance.
+
+> Every dollar of LP yield has a borrower behind it, a facility behind that borrower, and an underwriting decision behind that facility. Nothing in the yield number exists because a token schedule pushed a reward at LPs.
+
+## Where idle capital goes
+
+Borrower demand and LP deposits do not move in lockstep. On days when deposits outrun borrower draws, the vault has undeployed USDC that would otherwise earn nothing. Those funds sit in Aave, earning a lower DeFi lending rate until the next draw. This does three things:
+
+1. It smooths the yield curve during soft borrower-demand periods. Without this deployment, idle days would be zero-yield days.
+2. It is the primary source of redemption liquidity. Because the Aave position is fully liquid and withdrawable on demand, LP redemptions settle by withdrawing from Aave, not by recalling borrower advances.
+3. It does not replace the fee yield. The DeFi rate is lower, and a slow month is a slower yield month, visibly. There is no subsidy that papers over weak utilization.
+
+Aave is the only base-layer lending venue deployed into at this stage. Governance can rotate to additional protocols later, but every protocol has to clear an audited-and-seasoned bar before undrawn USDC goes near it. That is a protocol-level risk decision, not a yield-optimization decision.
+
+## The LP lifecycle end to end
+
+The lifecycle has three states: deposit, hold, redeem. There is no lockup at the base layer, no cliff, no epoch, no yield-harvest window.
+
+**Deposit.** Connect a wallet, specify a USDC amount, mint LP tokens at the current share price. Minimum one USDC. Permissionless at the contract layer; geofencing at the frontend layer enforces jurisdictional restrictions.
+
+**Hold.** Do nothing. The LP token accrues value as borrowers draw, use capital, and repay. Staking $APPEX is optional and is a separate workflow. Redeeming does not require claiming anything first.
+
+**Redeem.** Submit a withdrawal request. The vault passes the request through three processing gates:
+
+1. **Available liquidity.** Does the Aave-deployed position cover the request? If yes, the redemption settles promptly.
+2. **Daily redemption cap.** A vault-level cap limits total daily exits, usually set as a percentage of circulating LP tokens. If the cap is reached, additional requests are rejected for that processing window and must be resubmitted.
+3. **Per-request limit.** An optional cap prevents a single large LP from draining redemption capacity in one request.
+
+If Aave-deployed liquidity does not cover a request, the request queues FIFO and fills as repayments or new deposits arrive. The vault never liquidates outstanding borrower advances to satisfy an exit. A Net-90 receivable matures in ninety days, not on an LP's schedule. This is the fundamental tradeoff of fee-sourced yield: real yield requires real term commitment, and exit liquidity is structured, not guaranteed on demand.
+
+Queued LPs keep their LP tokens until settlement and continue accruing yield while they wait. Redemption requests are not positions that get paused.
+
+## What real yield asks of LPs
+
+The thing most DeFi pools hide is this: yield is a product of term structure. A pool that promises instant exit on a balance funded by term-committed borrower advances is making a promise the pool cannot keep under stress. appeX does not make that promise. The redemption gates are documented. The absence of early recall is documented. The FIFO queue is documented.
+
+What that means practically is that LP capital earns from borrower activity, and LP exit liquidity is backed by the idle portion of that capital deployed to Aave. During normal conditions, exits settle same-day. During stress, exits may take multiple days. Both are possible outcomes of the same structure.
+
+The upside of that structure is that the yield number is a real number. It is not subsidized. It is not emitted. It is not dependent on the price of a reward token that can decline faster than the yield compounds. Every dollar of LP yield came from a borrower paying a fee on an advance, on the facility they agreed to when they onboarded.
+
+The trade for that is that the exit is a gated process, not a spigot.
+
+## Staking as a second, optional stream
+
+LPs who want a second yield stream can lock LP tokens into the staking contract and stake $APPEX against them, up to a per-vault cap. Fifty percent of every protocol fee flows to stakers, weighted by lock duration: 1x for no-lock, 2x for three-month lock, 3x for six-month lock. This is base yield plus a share of protocol-fee flow, not an additional LP yield fee on top of advances.
+
+Staking is fully optional. Base yield pays whether an LP stakes or not. The decision to stake is a liquidity tradeoff: locking LP tokens means they cannot be redeemed until the staking lock expires. For LPs whose capital is patient, staking adds a meaningful stream. For LPs whose capital needs flexibility, base yield alone is the answer.
+
+If any of this resonates and deposit mechanics are the next question, the LPs page covers the interface and the path in: [see how LPs earn](/lps).

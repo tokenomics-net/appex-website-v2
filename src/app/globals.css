@@ -1,0 +1,705 @@
+@import "tailwindcss";
+
+/* ================================================================
+   appeX Protocol  - Design Token System
+   Source: brand-assets/appex/brand/DESIGN.md
+   Palette lock: #5A1CCB purple, #FED607 yellow, #0A0F1F near-black, #B8B5AE backdrop
+   NEVER hardcode hex values in component files  - always use var(--ax-*)
+   ================================================================ */
+
+@theme inline {
+  /* Core palette aliases for Tailwind */
+  --color-primary:              var(--ax-capital-yellow);
+  --color-primary-foreground:   var(--ax-fortress);
+  --color-secondary:            var(--ax-node-purple);
+  --color-accent:               var(--ax-capital-yellow);
+  --color-accent-foreground:    var(--ax-fortress);
+  --color-background:           var(--ax-fortress);
+  --color-surface:              var(--ax-fortress-light);
+  --color-border:               var(--ax-fortress-border);
+  --color-text-primary:         var(--ax-text-primary);
+  --color-text-secondary:       var(--ax-text-secondary);
+  --color-text-muted:           var(--ax-text-tertiary);
+
+  /* Template library token slots */
+  --color-bg-primary:           var(--ax-fortress);
+  --color-bg-secondary:         var(--ax-fortress-light);
+  --color-bg-raised:            var(--ax-card-bg);
+  --color-text-inverse:         var(--ax-fortress);
+  --color-border-hairline:      rgba(255, 255, 255, 0.06);
+  --color-overlay-bottom-fade:  linear-gradient(0deg, var(--ax-fortress) 0%, transparent 60%);
+  --gradient-image-glow:        radial-gradient(ellipse at center, rgba(90, 28, 203, 0.22) 0%, rgba(254, 214, 7, 0.08) 45%, transparent 72%);
+  --shadow-asset-float:         0 32px 64px rgba(90, 28, 203, 0.22), 0 8px 24px rgba(0, 0, 0, 0.45);
+
+  /* Font families - populated by next/font/local in layout.tsx */
+  --font-display-family:        var(--font-tektur, system-ui, sans-serif);
+  --font-body-family:           var(--font-hubot, system-ui, sans-serif);
+  --font-display-weight:        400;
+  --font-sans:                  var(--font-hubot, system-ui, sans-serif);
+  --font-heading:               var(--font-tektur, system-ui, sans-serif);
+  --font-mono:                  'Courier New', monospace;
+
+  /* Radii */
+  --radius-sm:                  6px;
+  --radius-md:                  12px;
+  --radius-lg:                  16px;
+  --radius-pill:                9999px;
+
+  /* Motion */
+  --duration-fast:              150ms;
+  --duration-base:              200ms;
+  --duration-slow:              400ms;
+  --ease-standard:              cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-enter:                 cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  /* ---- Fortress Black family ---- */
+  --ax-fortress-dark:           #050A18;
+  --ax-fortress:                #0A0F1F;
+  --ax-fortress-light:          #0F1528;
+  --ax-fortress-border:         #1A2240;
+  --ax-card-bg:                 #131829;
+
+  /* ---- Capital Yellow family ---- */
+  --ax-capital-yellow:          #FED607;
+  --ax-capital-dim:             #C9AB06;
+  --ax-glint-yellow:            #FAF28B;
+
+  /* ---- Node Purple family ---- */
+  --ax-node-purple:             #5A1CCB;
+  --ax-node-purple-light:       #7A3EF0;
+  --ax-ether-mist:              #B9A0CC;
+  --ax-pink:                    #C3A8AE;
+
+  /* ---- Backdrop ---- */
+  --ax-backdrop:                #B8B5AE;
+
+  /* ---- Text / Foreground ---- */
+  --ax-cream:                   #F0ECD8;
+  --ax-text-primary:            rgba(255, 255, 255, 0.92);
+  --ax-text-secondary:          rgba(185, 160, 204, 0.78);
+  --ax-text-tertiary:           rgba(185, 160, 204, 0.50);
+
+  /* ---- Surfaces ---- */
+  --bg-base:                    #0A0F1F;
+  --bg-surface:                 #0F1528;
+  --bg-elevated:                #131829;
+  --bg-border:                  #1A2240;
+  --color-card-border:          rgba(255, 255, 255, 0.06);
+
+  /* ---- Semantic ---- */
+  --ax-success:                 rgba(22, 197, 94, 0.7);
+  --ax-warning:                 rgba(234, 179, 8, 0.6);
+  --ax-info:                    rgba(96, 165, 250, 0.6);
+  --ax-error:                   rgba(239, 68, 68, 0.65);
+
+  /* ---- Spacing (4px grid) ---- */
+  --ax-space-xs:                4px;
+  --ax-space-sm:                8px;
+  --ax-space-md:                12px;
+  --ax-space-lg:                16px;
+  --ax-space-xl:                24px;
+  --ax-space-2xl:               32px;
+  --ax-space-3xl:               48px;
+  --ax-space-4xl:               64px;
+  --ax-space-5xl:               80px;
+  --ax-space-6xl:               96px;
+
+  /* ---- Named gradients ---- */
+  --ax-gradient-brand:          linear-gradient(135deg, #B9A0CC 0%, #C3A8AE 20%, #FED607 45%, #FAF28B 60%, #5A1CCB 100%);
+  --ax-gradient-gold:           linear-gradient(90deg, #FED607, #FAF28B);
+  --ax-gradient-purple:         linear-gradient(90deg, #5A1CCB, #B9A0CC);
+  --ax-gradient-footer:         linear-gradient(180deg, #0A0F1F 0%, #050812 100%);
+
+  /* ---- Shadows ---- */
+  --ax-shadow-card:             0 4px 24px rgba(0, 0, 0, 0.32), 0 1px 4px rgba(0, 0, 0, 0.24);
+  --ax-shadow-elevated:         0 8px 40px rgba(0, 0, 0, 0.40), 0 2px 8px rgba(0, 0, 0, 0.28);
+  --ax-shadow-float:            0 32px 64px rgba(90, 28, 203, 0.22), 0 8px 24px rgba(0, 0, 0, 0.45);
+
+  /* ---- Footer tokens ---- */
+  --color-bg-footer-start:      #0A0F1F;
+  --color-bg-footer-end:        #050812;
+  --color-border-magma:         rgba(90, 28, 203, 0.28);
+  --color-text-muted-strong:    rgba(255, 255, 255, 0.88);
+  --color-text-secondary-dim:   rgba(255, 255, 255, 0.64);
+  --color-accent-purple:        #5A1CCB;
+  --color-accent-yellow:        #FED607;
+  --color-border-hairline:      rgba(255, 255, 255, 0.06);
+
+  /* ---- Header state ---- */
+  --header-height:              80px;
+
+  /* ---- Section max-width (all sections must match header) ---- */
+  --section-max-width:          1280px;
+  --section-padding-h:          48px;
+}
+
+/* ================================================================
+   Base resets
+   ================================================================ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background-color: var(--ax-fortress);
+  color: var(--ax-text-primary);
+  font-family: var(--font-body-family);
+}
+
+/* ================================================================
+   Typography gradient utilities
+   ================================================================ */
+
+.text-brand-gradient {
+  background-image: var(--ax-gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-gold-gradient {
+  background-image: var(--ax-gradient-gold);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.text-purple-gradient {
+  background-image: var(--ax-gradient-purple);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Brand accent bar */
+.brand-grad-bar {
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #b9a0cc 0%, #c3a8ae 25%, #fed607 50%, #faf28b 75%, #5a1ccb 100%);
+}
+
+/* ================================================================
+   Animation keyframes
+   ================================================================ */
+
+@keyframes float-prism {
+  0%, 100% { transform: translateY(-6px); }
+  50%       { transform: translateY(6px); }
+}
+
+@keyframes float-ingot {
+  0%, 100% { transform: translateY(-7px); }
+  50%       { transform: translateY(7px); }
+}
+
+@keyframes float-stone {
+  0%, 100% { transform: translate3d(0, -5px, 0); }
+  50%       { transform: translate3d(0,  5px, 0); }
+}
+
+@keyframes float-medallion {
+  0%, 100% { transform: translate3d(0, -4px, 0); }
+  50%       { transform: translate3d(0,  4px, 0); }
+}
+
+@keyframes float-cube {
+  0%, 100% { transform: translate3d(0, -6px, 0); }
+  50%       { transform: translate3d(0,  6px, 0); }
+}
+
+@keyframes float-ziggurat {
+  0%, 100% { transform: translate3d(0, -8px, 0); }
+  50%       { transform: translate3d(0,  8px, 0); }
+}
+
+@keyframes rotate-medallion {
+  from { transform: rotate3d(0, 1, 0, 0deg); }
+  to   { transform: rotate3d(0, 1, 0, 360deg); }
+}
+
+@keyframes rotate-bloom-bg {
+  from { transform: scale(1.4) rotate(-360deg); }
+  to   { transform: scale(1.4) rotate(0deg); }
+}
+
+@keyframes hero-shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50%       { background-position: 100% 50%; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bar-draw {
+  from { width: 0; }
+  to   { width: 48px; }
+}
+
+@keyframes ambient-pulse {
+  0%, 100% { filter: brightness(1); }
+  50%       { filter: brightness(1.08); }
+}
+
+@keyframes signal-drift {
+  0%   { transform: rotate(0deg) scale(1.1); }
+  25%  { transform: rotate(1deg) scale(1.1); }
+  75%  { transform: rotate(-1deg) scale(1.1); }
+  100% { transform: rotate(0deg) scale(1.1); }
+}
+
+/* ================================================================
+   Accessibility
+   ================================================================ */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 1rem;
+  z-index: 9999;
+  background: var(--ax-capital-yellow);
+  color: var(--ax-fortress);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-weight: 700;
+  text-decoration: none;
+  font-family: var(--font-body-family);
+  font-size: 0.875rem;
+}
+
+.skip-link:focus {
+  left: 12px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--ax-capital-yellow);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ================================================================
+   Reduced motion override
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ================================================================
+   Showcase token aliases  - referenced by ported DOM class names
+   ================================================================ */
+
+:root {
+  --border-hairline:            rgba(255, 255, 255, 0.06);
+  --text-primary:               rgba(255, 255, 255, 0.92);
+  --text-secondary:             rgba(185, 160, 204, 0.78);
+  --text-muted:                 rgba(185, 160, 204, 0.50);
+  --surface-raised:             #0F1528;
+  --ax-gradient-gold-line:      linear-gradient(90deg, rgba(254,214,7,0.6), rgba(254,214,7,0.2));
+  --ax-gradient-purple-line:    linear-gradient(90deg, rgba(90,28,203,0.4), rgba(185,160,204,0.2));
+  --font-display-family:        var(--font-tektur, system-ui, sans-serif);
+  --font-body-family:           var(--font-hubot, system-ui, sans-serif);
+  --font-mono-family:           'Courier New', monospace;
+}
+
+/* ================================================================
+   Button tier system  - ported from 09-components.html
+   ================================================================ */
+
+/* Tier 1: Primary Capital Yellow */
+.ax-btn--primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ax-capital-yellow);
+  color: var(--ax-fortress);
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0px 4px 24px rgba(254,214,7,0.35), 0px 0px 60px rgba(254,214,7,0.15);
+  transition: transform 200ms ease, box-shadow 200ms ease;
+  white-space: nowrap;
+}
+.ax-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 6px 32px rgba(254,214,7,0.45), 0px 0px 80px rgba(254,214,7,0.2);
+}
+.ax-btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0px 2px 12px rgba(254,214,7,0.3);
+}
+.ax-btn--primary:focus-visible {
+  outline: 2px solid var(--ax-capital-yellow);
+  outline-offset: 3px;
+}
+
+/* Tier 2: Secondary Ghost Gold Pill */
+.ax-btn--secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--ax-capital-yellow);
+  border: 1px solid rgba(254,214,7,0.3);
+  padding: 12px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 200ms ease, background 200ms ease;
+  white-space: nowrap;
+}
+.ax-btn--secondary:hover {
+  border-color: rgba(254,214,7,0.6);
+  background: rgba(254,214,7,0.04);
+}
+.ax-btn--secondary:focus-visible {
+  outline: 2px solid var(--ax-capital-yellow);
+  outline-offset: 3px;
+}
+
+/* Tier 3: Signal Node Purple Glow */
+.ax-btn--signal {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(90,28,203,0.15);
+  color: var(--ax-ether-mist);
+  border: 1px solid rgba(90,28,203,0.4);
+  padding: 10px 20px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 0 24px rgba(90,28,203,0.25), inset 0 1px 0 rgba(255,255,255,0.05);
+  transition: box-shadow 200ms ease;
+  white-space: nowrap;
+}
+.ax-btn--signal:hover {
+  box-shadow: 0 0 32px rgba(90,28,203,0.4), inset 0 1px 0 rgba(255,255,255,0.08);
+}
+.ax-btn--signal:focus-visible {
+  outline: 2px solid var(--ax-ether-mist);
+  outline-offset: 3px;
+}
+
+/* Tier 4: Ghost Muted (tertiary links/cards) */
+.ax-btn--ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  color: var(--ax-ether-mist);
+  border: 1px solid rgba(185,160,204,0.3);
+  padding: 10px 28px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body-family);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 200ms ease, background 200ms ease;
+  white-space: nowrap;
+}
+.ax-btn--ghost:hover {
+  border-color: rgba(185,160,204,0.5);
+  background: rgba(185,160,204,0.04);
+}
+.ax-btn--ghost:focus-visible {
+  outline: 2px solid var(--ax-ether-mist);
+  outline-offset: 3px;
+}
+
+/* ================================================================
+   Keyframe animations
+   ================================================================ */
+
+/* Tab panel fade-in (process steps) */
+@keyframes axTabFade {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Float animation for 3D assets  - translateY only, NO rotation */
+@keyframes axFloat {
+  0%   { transform: translateY(0px); }
+  50%  { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* Slow brightness pulse for scene backgrounds */
+@keyframes axScenePulse {
+  0%   { filter: brightness(0.97); }
+  50%  { filter: brightness(1.03); }
+  100% { filter: brightness(0.97); }
+}
+
+/* Fade-up reveal for scroll-triggered elements */
+@keyframes axFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Shimmer sweep for hero gradient text */
+@keyframes axShimmer {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Counter count-up placeholder (actual count logic in JS) */
+@keyframes axCountUp {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ================================================================
+   Interactive process steps  - showcase class ports
+   ================================================================ */
+
+.ax-step-btn:focus-visible {
+  outline: 2px solid var(--ax-capital-yellow);
+  outline-offset: 4px;
+  border-radius: 50%;
+}
+
+.ax-step-panel {
+  animation: axTabFade 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@media (max-width: 768px) {
+  .ax-process-nav {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    padding: 24px 16px 16px !important;
+  }
+  .ax-process-nav > [aria-hidden] {
+    display: none !important;
+  }
+}
+
+/* ================================================================
+   Reduced-motion keyframe overrides
+   ================================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  @keyframes axFloat { to { transform: translateY(0); } }
+  @keyframes axScenePulse { to { filter: brightness(1); } }
+  @keyframes axShimmer { to { background-position: 0% 50%; } }
+  @keyframes axTabFade { to { opacity: 1; transform: none; } }
+}
+
+/* ================================================================
+   Site header  - fixed nav bar
+   Source: SiteHeaderClient.tsx
+   Extracted to globals.css so header styles are in the external
+   stylesheet loaded in <head>, not a body-injected <style> tag.
+   This guarantees consistent cascade order across all browsers
+   (including Safari iOS) regardless of page-level component styles.
+   ================================================================ */
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 80px;
+  transition: height 200ms ease, background 200ms ease, backdrop-filter 200ms ease, border-color 200ms ease;
+  /* Glass backdrop at rest  - legible from frame 0 on every hero.
+     Previously transparent, which required scrolling 80px before links
+     became readable. rgba(10,15,31,0.72) + blur(14px) gives contrast
+     on all hero images without obscuring the hero composition. */
+  background: rgba(10, 15, 31, 0.72);
+  backdrop-filter: blur(14px) saturate(120%);
+  -webkit-backdrop-filter: blur(14px) saturate(120%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.site-header.is-scrolled {
+  height: 80px;
+  background: rgba(10, 15, 31, 0.88);
+  backdrop-filter: blur(20px) saturate(140%);
+  -webkit-backdrop-filter: blur(20px) saturate(140%);
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+.site-header__inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+}
+
+@media (max-width: 1279px) {
+  .site-header__inner { padding: 0 32px; }
+}
+
+@media (max-width: 1023px) {
+  .site-header__inner { padding: 0 24px; }
+}
+
+@media (max-width: 767px) {
+  .site-header { height: 56px; }
+  .site-header__inner { padding: 0 16px; }
+}
+
+.site-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.site-header__logo img { display: block; }
+.site-header__logo .wordmark { display: block; height: 24px; width: auto; }
+.site-header__logo .mark    { display: block; height: 28px; width: 28px; }
+
+@media (max-width: 767px) {
+  .site-header__logo .wordmark { height: 18px; }
+  .site-header__logo .mark    { height: 22px; width: 22px; }
+  .site-header__logo { gap: 6px; }
+}
+
+.site-header__nav {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+@media (max-width: 1279px) {
+  .site-header__nav {
+    position: static;
+    transform: none;
+    margin-left: 48px;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 767px) {
+  .site-header__nav { display: none; }
+}
+
+.site-header__ctas {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 767px) {
+  .site-header__ctas { display: none; }
+}
+
+.site-header__hamburger {
+  display: none;
+  width: 44px;
+  height: 44px;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.88);
+  border-radius: 8px;
+}
+
+@media (max-width: 767px) {
+  .site-header__hamburger { display: flex; }
+}
+
+.site-header__hamburger:focus-visible {
+  outline: 2px solid var(--ax-capital-yellow);
+  outline-offset: 2px;
+}
+
+.header-nav-link {
+  position: relative;
+  display: inline-block;
+  font-family: var(--font-display-family);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  padding: 4px 0;
+}
+
+.header-nav-link:hover { color: var(--ax-node-purple); }
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header { transition: none; }
+  .site-header .ax-btn--primary { transition: none; }
+}
+
+/* ================================================================
+   Nav gradient scrim  - persistent top-of-page backdrop
+   Source: variant-a-liquidity-field/index.html (.nav-gradient)
+   Original: position:fixed;top:0;left:0;right:0;height:140px;
+             background:linear-gradient(to bottom, rgba(10,15,31,0.85) 0%, transparent 100%);
+             z-index:4;pointer-events:none
+   This ensures nav links are readable at every scroll position on
+   every page  - not just after the is-scrolled glass activates.
+   z-index: 99 puts it just below the header at 100, above page content.
+   ================================================================ */
+
+.nav-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 140px;
+  background: linear-gradient(to bottom, rgba(10, 15, 31, 0.85) 0%, transparent 100%);
+  z-index: 99;
+  pointer-events: none;
+}

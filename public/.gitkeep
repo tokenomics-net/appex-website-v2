@@ -1,0 +1,8 @@
+# Slots for required public assets:
+#
+#   public/og-default.png      — 1200x630 OG image (required before launch)
+#   public/logo.png            — Logo for JSON-LD schema references
+#   public/favicon.ico         — Browser tab icon
+#   public/apple-touch-icon.png— iOS home screen icon
+#
+# Place client brand assets here during customization.
