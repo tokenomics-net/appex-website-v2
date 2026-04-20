@@ -214,7 +214,7 @@ export function ProtocolHero(): React.JSX.Element {
             opacity: 1;
             transform: none;
           }
-          .proto-hero__core { animation: none; transform: none; }
+          .proto-hero__core { animation: none; transform: translateY(-50%); }
         }
 
         /* Floating hero asset  --  protocol core (hero exception to float rule) */
