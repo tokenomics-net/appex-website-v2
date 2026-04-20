@@ -102,7 +102,16 @@ export function ProtocolHero(): React.JSX.Element {
           .proto-hero__grid { padding: 120px 32px 80px; }
         }
         @media (max-width: 767px) {
-          .proto-hero__grid { padding: 100px 24px 60px; }
+          .proto-hero__grid { padding: 28px 24px 60px; }
+        }
+
+        /* Mobile: section becomes a column so the static asset stacks above the grid */
+        @media (max-width: 767px) {
+          .proto-hero {
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 96px;
+          }
         }
 
         /* Copy cluster  --  constrained to left 50% of viewport where gradient protects */
@@ -235,13 +244,41 @@ export function ProtocolHero(): React.JSX.Element {
           50%       { rotate:  1deg; }
         }
 
-        @media (max-width: 1023px) {
+        /* Tablet (768-1023px): asset moves inline above copy, still flows before grid */
+        @media (max-width: 1023px) and (min-width: 768px) {
           .proto-hero__core {
             position: static;
             display: block;
-            width: clamp(180px, 50vw, 280px);
+            width: clamp(180px, 38vw, 280px);
             margin: 0 auto 32px;
             animation: none;
+            transform: none;
+          }
+        }
+
+        /* Mobile (<768px): asset flows as block above the grid, centered, 200-250px */
+        @media (max-width: 767px) {
+          .proto-hero__core {
+            position: static;
+            display: block;
+            width: clamp(200px, 55vw, 250px);
+            margin: 0 auto 28px;
+            animation:
+              protoCoreFloatMobile 6s ease-in-out infinite,
+              protoCoreRock        8s ease-in-out infinite;
+            transform: none;
+          }
+
+          @keyframes protoCoreFloatMobile {
+            0%, 100% { transform: translateY(-8px); }
+            50%       { transform: translateY(8px); }
+          }
+        }
+
+        @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+          .proto-hero__core {
+            animation: none;
+            rotate: 0deg;
             transform: none;
           }
         }

@@ -127,8 +127,17 @@ export function AboutHero(): React.JSX.Element {
 
         @media (max-width: 767px) {
           .about-hero__grid {
-            padding: 96px 24px 72px;
+            padding: 28px 24px 72px;
             align-items: flex-start;
+          }
+        }
+
+        /* Mobile: section becomes a column so the static asset stacks above the grid */
+        @media (max-width: 767px) {
+          .about-hero {
+            flex-direction: column;
+            justify-content: flex-start;
+            padding-top: 96px;
           }
         }
 
@@ -267,13 +276,41 @@ export function AboutHero(): React.JSX.Element {
           50%       { rotate:  1deg; }
         }
 
-        @media (max-width: 1023px) {
+        /* Tablet (768-1023px): asset moves inline above copy, still flows before grid */
+        @media (max-width: 1023px) and (min-width: 768px) {
           .about-hero__marker {
             position: static;
             display: block;
-            width: clamp(160px, 48vw, 260px);
+            width: clamp(160px, 38vw, 260px);
             margin: 0 auto 32px;
             animation: none;
+            transform: none;
+          }
+        }
+
+        /* Mobile (<768px): asset flows as block above the grid, centered, 200-250px */
+        @media (max-width: 767px) {
+          .about-hero__marker {
+            position: static;
+            display: block;
+            width: clamp(200px, 55vw, 250px);
+            margin: 0 auto 28px;
+            animation:
+              aboutMarkerFloatMobile 6s ease-in-out infinite,
+              aboutMarkerRock        8s ease-in-out infinite;
+            transform: none;
+          }
+
+          @keyframes aboutMarkerFloatMobile {
+            0%, 100% { transform: translateY(-8px); }
+            50%       { transform: translateY(8px); }
+          }
+        }
+
+        @media (max-width: 767px) and (prefers-reduced-motion: reduce) {
+          .about-hero__marker {
+            animation: none;
+            rotate: 0deg;
             transform: none;
           }
         }
