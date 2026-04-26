@@ -8,9 +8,9 @@
  * Background: r17-texture-grounding.png at 20% + r23-scene-trust.webp at 10% overlay blend
  *   Purple wash upper-left + warm wash lower-right (diagonal temperature gradient).
  * Layout: 4 alternating image-dominant rows, 45/55 asset-copy splits.
- *   Row 1: asset LEFT  (r19-asset-momentum-wave)
+ *   Row 1: asset LEFT  (r48-asset-momentum-wave-bright-transparent)
  *   Row 2: asset RIGHT (r19-asset-fee-split-disc)
- *   Row 3: asset LEFT  (r21-step-repayment-cycle)
+ *   Row 3: asset LEFT  (r70-asset-step-repayment-cycle-r5n-bright-transparent)
  *   Row 4: asset RIGHT (r19-asset-security-seal-obelisk)
  * Each row shows traditional column + appeX column side-by-side per copy spec.
  * Hover lift: translateY -2px / 200ms on each row. Reduced motion: disabled.
@@ -36,7 +36,7 @@ const ROWS: WhyRow[] = [
     id:          "speed",
     concept:     "Row 1",
     h3:          "Structured evaluation, not relationship-gated underwriting.",
-    asset:       "/images/r36-asset-evaluation-frame-transparent.webp",
+    asset:       "/images/r57-asset-evaluation-frame-bright-transparent.webp",
     assetReverse: false,
     traditional: "Factoring and bank lines move at the speed of the loan officer's calendar. Access depends on an existing relationship. Timelines are opaque and negotiation happens by phone.",
     appex:       "A documented application runs a credit review, compliance checks, and term negotiation on the same track for every applicant. Timeline responds to application quality, not to who you know.",
@@ -46,7 +46,7 @@ const ROWS: WhyRow[] = [
     id:          "pricing",
     concept:     "Row 2",
     h3:          "One fee curve per facility. No invoice-level haggling.",
-    asset:       "/images/r36-asset-single-curve-transparent.webp",
+    asset:       "/images/r74-asset-single-curve-bright-transparent.webp",
     assetReverse: true,
     traditional: "Factoring rates vary invoice to invoice. Discount spreads float with advance rates, concentration limits, and renegotiated decks each quarter. Borrowers carry pricing uncertainty into every receivable.",
     appex:       "Fee parameters are fixed during onboarding and apply to every draw inside the facility. The borrower knows the fee curve before the first draw and for every draw after.",
@@ -56,7 +56,7 @@ const ROWS: WhyRow[] = [
     id:          "obligation",
     concept:     "Row 3",
     h3:          "Stakers share the fees borrowers pay.",
-    asset:       "/images/r36-asset-divided-share-transparent.webp",
+    asset:       "/images/r56-asset-divided-share-r5n-bright-transparent.webp",
     assetReverse: false,
     traditional: "Factoring desks collect spreads and move on. Bank lines add covenants every renewal cycle. No counterparty has a structural reason to want the borrower to succeed long term.",
     appex:       "Fifty percent of every protocol fee flows to $APPEX stakers. Borrowers who grow drive rewards to the same capital providers who underwrote their facility. Incentives point the same way.",
@@ -66,7 +66,7 @@ const ROWS: WhyRow[] = [
     id:          "covenants",
     concept:     "Row 4",
     h3:          "The facility is a clean two-party agreement.",
-    asset:       "/images/r36-asset-two-parties-transparent.webp",
+    asset:       "/images/r93-asset-twin-plinths-r5n-bright-transparent.webp",
     assetReverse: true,
     traditional: "Bank lines carry financial covenants, negative pledge clauses, operating restrictions, and reporting obligations. A breach of any covenant can trigger a draw-stop regardless of the underlying credit.",
     appex:       "No financial covenants. No operating restrictions. No negative pledge outside the advance itself. The borrower runs the business. appeX holds a contractual claim against the draw.",
@@ -166,7 +166,7 @@ export function WhyAppex(): React.JSX.Element {
 
         .why-appex__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -288,9 +288,10 @@ export function WhyAppex(): React.JSX.Element {
           .why-appex__compare { grid-template-columns: 1fr; gap: 16px; }
         }
 
+        /* Mobile audit: bumped from 10px to 14px minimum. */
         .why-appex__col-label {
           font-family: var(--font-display-family);
-          font-size: 10px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -316,7 +317,7 @@ export function WhyAppex(): React.JSX.Element {
       <section className="why-appex" id="why">
         {/* Texture underlayer */}
         <Image
-          src="/images/r17-texture-grounding.png"
+          src="/images/r17-texture-grounding.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

@@ -34,16 +34,20 @@ export default function Error({ error, unstable_retry }: ErrorProps) {
         alignItems: "center",
         justifyContent: "center",
         minHeight: "60vh",
-        padding: "4rem 2rem",
+        padding: "96px 24px",
         textAlign: "center",
-        fontFamily: "var(--font-sans, system-ui, sans-serif)",
+        background: "var(--ax-fortress, #0A0F1F)",
+        fontFamily: "var(--font-body-family, system-ui, sans-serif)",
       }}
     >
       <h1
         style={{
-          fontSize: "1.5rem",
-          fontWeight: "600",
-          color: "var(--color-text-primary, #111)",
+          fontFamily: "var(--font-display-family, system-ui)",
+          fontSize: "14px",
+          fontWeight: 600,
+          letterSpacing: "0.12em",
+          textTransform: "uppercase",
+          color: "var(--ax-capital-yellow, #FED607)",
           marginBottom: "1rem",
         }}
       >
@@ -51,7 +55,8 @@ export default function Error({ error, unstable_retry }: ErrorProps) {
       </h1>
       <p
         style={{
-          color: "var(--color-text-secondary, #555)",
+          fontFamily: "var(--font-body-family, system-ui)",
+          color: "var(--ax-ether-mist, #B9A0CC)",
           maxWidth: "480px",
           lineHeight: "1.6",
           marginBottom: "2rem",
@@ -63,14 +68,14 @@ export default function Error({ error, unstable_retry }: ErrorProps) {
       <button
         onClick={unstable_retry}
         style={{
-          padding: "0.75rem 2rem",
-          background: "var(--color-primary, #000)",
-          color: "var(--color-primary-foreground, #fff)",
-          borderRadius: "0.375rem",
-          border: "none",
+          padding: "12px 24px",
+          background: "transparent",
+          border: "1px solid rgba(254, 214, 7, 0.3)",
+          borderRadius: "6px",
+          color: "var(--ax-capital-yellow, #FED607)",
+          fontFamily: "var(--font-display-family, system-ui)",
+          fontSize: "13px",
           cursor: "pointer",
-          fontWeight: "600",
-          fontSize: "1rem",
         }}
       >
         Try again

@@ -110,6 +110,9 @@ export function CategoryFilter({ activeCategorySlugs }: CategoryFilterProps): Re
         @media (max-width: 767px)  { .cat-filter__inner { padding: 0 16px; } }
         .cat-filter__inner::-webkit-scrollbar { display: none; }
 
+        /* Mobile audit exception: 11px retained -- category filter pill chip.
+         * Uppercase + letter-spacing + 6px padding provides adequate legibility.
+         * Not body content; a UI affordance control. */
         .cat-filter__chip {
           display: inline-flex;
           align-items: center;

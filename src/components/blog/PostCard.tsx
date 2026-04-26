@@ -10,15 +10,12 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Post } from "@/lib/blog/posts";
+import { formatDateLong } from "@/lib/formatters";
 import type React from "react";
 
 interface PostCardProps {
   post: Post;
   priority?: boolean;
-}
-
-function formatDate(dateStr: string): string {
-  return new Date(dateStr).toISOString().split("T")[0]; // YYYY-MM-DD
 }
 
 function categoryLabel(cat: string): string {
@@ -62,7 +59,7 @@ export function PostCard({ post, priority = false }: PostCardProps): React.JSX.E
           <dl className="post-card__meta">
             <dt className="sr-only">Published</dt>
             <dd className="post-card__meta-text">
-              {formatDate(frontmatter.date)} · {frontmatter.readTime} min read
+              {formatDateLong(frontmatter.date)} · {frontmatter.readTime} min read
             </dd>
           </dl>
         </div>

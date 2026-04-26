@@ -183,7 +183,7 @@ export function LPsHero(): React.JSX.Element {
         /* Eyebrow */
         .lp-hero__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -303,6 +303,7 @@ export function LPsHero(): React.JSX.Element {
         @media (max-width: 767px) {
           .lp-hero__prism {
             position: relative;
+            z-index: 0; /* below heading grid (z-index: 4) -- prevents floater overlapping heading text */
             right: auto;
             top: auto;
             width: clamp(200px, 58vw, 260px);
@@ -353,7 +354,7 @@ export function LPsHero(): React.JSX.Element {
 
         {/* Layer 4: r18-texture-horizon at 8% subliminal underlayer */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
@@ -370,7 +371,7 @@ export function LPsHero(): React.JSX.Element {
 
         {/* Floating LP capital ingot  --  mobile renders inline above copy */}
         <Image
-          src="/images/r22-asset-lp-yield-transparent.webp"
+          src="/images/r54-asset-lp-yield-r5n-bright-transparent.webp"
           alt="" aria-hidden="true"
           role="presentation"
           width={540}

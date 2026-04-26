@@ -102,7 +102,7 @@ export function ProtocolCTA(): React.JSX.Element {
 
         .proto-cta__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -154,7 +154,7 @@ export function ProtocolCTA(): React.JSX.Element {
       <section className="proto-cta" aria-labelledby="proto-cta-heading">
         {/* Texture */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           className="proto-cta__texture"

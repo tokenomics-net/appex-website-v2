@@ -10,10 +10,10 @@
  * Showcase port: 10-page-sections.html L616-790 (Four-Step Capital Cycle, trimmed to 3 steps)
  * Scene: r21-scene-solution-chamber.webp at 100% (Option B glassmorphism)
  * Assets:
- *   Step 1 (Deposit): r21-asset-deposit-pour-transparent.webp
- *     Step 1 asset: r21-asset-deposit-pour-transparent.webp
+ *   Step 1 (Deposit): r65-asset-deposit-pour-bright-transparent.webp
+ *     Step 1 asset: r65-asset-deposit-pour-bright-transparent.webp
  *   Step 2 (Fund): r19-asset-borrower-key-ingot-transparent.webp (KEPT)
- *   Step 3 (Earn): r19-asset-yield-curve-wedge-transparent.webp (swapped from ziggurat per Rev 4)
+ *   Step 3 (Earn): r44-asset-yield-curve-wedge-bright-transparent.webp (swapped from ziggurat per Rev 4)
  * Padding: 80px top/bottom per Rev 4
  * NO spinning, NO rotation  --  translateY float only
  */
@@ -42,7 +42,7 @@ const STEPS: StepData[] = [
     heading:    "LPs deposit USDC into a permissionless vault.",
     body:       "Permissionless access from 1 USDC. LP tokens mint at current NAV in the same transaction. No lockup period, no minimum, no waiting.",
     code:       "vault.deposit(usdc) \u2192 mint(lpTokens)",
-    asset:      "/images/r21-asset-deposit-pour-transparent.webp",
+    asset:      "/images/r65-asset-deposit-pour-bright-transparent.webp",
     assetAlt:   "Translucent magma-core pour, capital flowing into the vault",
     accentColor: "var(--ax-capital-yellow)",
   },
@@ -53,7 +53,7 @@ const STEPS: StepData[] = [
     heading:    "Approved borrowers draw capital and choose their payout format.",
     body:       "Each draw creates a receivable at the smart-contract level. Enforced limits protect LP capital while giving borrowers flexible, on-demand access to working capital.",
     code:       "vault.fund(borrower, { amount, payout: \"USDC\" | \"$APPEX\" })",
-    asset:      "/images/r22-step-fund-draw-transparent.webp",
+    asset:      "/images/r81-asset-step-fund-draw-bright-transparent.webp",
     assetAlt:   "Y-shaped conduit showing dual USDC and $APPEX payout outputs",
     accentColor: "var(--ax-ether-mist)",
   },
@@ -64,7 +64,7 @@ const STEPS: StepData[] = [
     heading:    "Fees accrue to NAV. LP token value appreciates.",
     body:       "Borrowers repay principal plus fees. Fees flow into the vault, increasing NAV continuously. LP positions compound automatically.",
     code:       "repay(principal + fees) \u2192 nav.increase",
-    asset:      "/images/r19-asset-yield-curve-wedge-transparent.webp",
+    asset:      "/images/r44-asset-yield-curve-wedge-bright-transparent.webp",
     assetAlt:   "Yield curve wedge: accruing fees",
     accentColor: "var(--ax-capital-yellow)",
   },
@@ -186,7 +186,7 @@ export function SolutionSection(): React.JSX.Element {
 
         .solution__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -253,7 +253,7 @@ export function SolutionSection(): React.JSX.Element {
 
         .ax-step-btn__label {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -319,7 +319,7 @@ export function SolutionSection(): React.JSX.Element {
         /* Copy column */
         .ax-step-panel__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -343,6 +343,8 @@ export function SolutionSection(): React.JSX.Element {
           margin-bottom: 20px;
         }
 
+        /* Mobile audit exception: 12px retained -- monospace inline code block.
+         * Smaller size is typographic convention for code; not body prose. */
         .ax-step-panel__code {
           font-family: var(--font-mono-family);
           font-size: 12px;

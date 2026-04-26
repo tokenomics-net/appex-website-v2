@@ -127,7 +127,7 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
 
         .post-grid-section__eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;
@@ -231,7 +231,7 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
           top: 12px;
           left: 12px;
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 2px;
           padding: 4px 10px;
@@ -286,9 +286,10 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
           margin-top: auto;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-card__meta-text {
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           letter-spacing: 0.02em;
         }
@@ -315,9 +316,10 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
           line-height: 1.55;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-grid__empty-link {
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 2px;
           padding: 10px 20px;
@@ -336,9 +338,10 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
           margin-top: 48px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-grid__load-more {
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -374,7 +377,7 @@ export function PostGrid({ posts }: PostGridProps): React.JSX.Element {
           style={{
             position: "absolute",
             inset: 0,
-            backgroundImage: "url('/images/r17-texture-calm.png')",
+            backgroundImage: "url('/images/r17-texture-calm.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
             opacity: 0.18,

@@ -30,6 +30,7 @@ yarn-error.log*
 
 # env files — never commit .env.local (contains GA ID, API keys)
 .env*
+!.env.example
 
 # vercel
 .vercel

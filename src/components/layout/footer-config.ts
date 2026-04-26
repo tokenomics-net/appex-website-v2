@@ -47,7 +47,7 @@ export const footerConfig: FooterConfig = {
     wordmarkSrc:  "/brand/appex-wordmark.svg",
     wordmarkAlt:  "appeX Protocol",
     mission:      "Capital that settles the day it is earned.",
-    cubeAssetSrc: "/images/r19-asset-footer-mark-cube-transparent.webp",
+    cubeAssetSrc: "/images/r49-asset-footer-mark-cube-bright-transparent.webp",
     socials: [
       { platform: "X",        href: siteConfig.socials.x,       iconKey: "x"        },
       { platform: "LinkedIn", href: siteConfig.socials.linkedin, iconKey: "linkedin" },
@@ -61,8 +61,8 @@ export const footerConfig: FooterConfig = {
         { label: "For LPs",        href: "/lps"               },
         { label: "For Borrowers",  href: "/borrowers"         },
         { label: "$APPEX Token",   href: "/appex"             },
-        { label: "Fee structure",  href: "/protocol#fees"     },
-        { label: "Risk framework", href: "/protocol#risk"     },
+        { label: "Fee structure",  href: "/protocol#fee-curve"     },
+        { label: "Risk framework", href: "/protocol#risk-velocity"     },
       ],
     },
     {
@@ -89,8 +89,7 @@ export const footerConfig: FooterConfig = {
     links: [
       { label: "Terms",         href: "/terms"       },
       { label: "Privacy",       href: "/privacy"     },
-      { label: "Disclosures",   href: "/protocol#risk-velocity" },
-      { label: "Cookie policy", href: "/cookies"     },
+      { label: "Disclosures",   href: "/disclosures" },
     ],
   },
 };

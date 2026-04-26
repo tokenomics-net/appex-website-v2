@@ -16,8 +16,8 @@
  * Per-step floating assets (ALL REUSE from borrowers design spec):
  *   Step 1 Apply:        r19-asset-borrower-key-ingot-transparent.webp
  *   Step 2 Review:       r19-asset-fee-split-disc-transparent.webp
- *   Step 3 Draw:         r22-step-fund-draw-transparent.webp
- *   Step 4 Repay:        r21-step-repayment-cycle-transparent.webp
+ *   Step 3 Draw:         r81-asset-step-fund-draw-bright-transparent.webp
+ *   Step 4 Repay:        r70-asset-step-repayment-cycle-r5n-bright-transparent.webp
  * UNIFORM card treatment across all 4 steps per LPs R1 lesson.
  * Floating assets: translateY 6-10px / 4-6s ease-in-out. NO rotation. opacity: 1 always.
  * Copy: copy/borrowers.md Section 3. Present tense. No em dashes.
@@ -45,7 +45,7 @@ const STEPS: ProcessStep[] = [
     heading:  "Submit a structured application.",
     body:     "Send financial statements, a short business-model document, and customer payment data. The application runs on a documented track rather than through a loan-officer relationship. Timeline depends on documentation completeness and the complexity of the credit file.",
     bullet:   "No relationship-gated wait-list. Every applicant joins the same queue.",
-    asset:    "/images/r36-asset-structured-application-transparent.webp",
+    asset:    "/images/r89-asset-filed-dossier-bright-transparent.webp",
     assetAlt: "",
     floatDur: "4.8s",
     glowStyle: {
@@ -58,7 +58,7 @@ const STEPS: ProcessStep[] = [
     heading:  "Credit review and term negotiation.",
     body:     "Credit assessment looks at the borrower's own ability to repay, not at downstream customers. Background checks verify corporate identity, beneficial ownership, and regulatory standing. Borrowing limit, payment-term range, LP yield fee, and protocol fee rate are agreed together.",
     bullet:   "Terms reflect margin, payment velocity, creditworthiness, and strategic fit.",
-    asset:    "/images/r36-asset-credit-review-loupe-transparent.webp",
+    asset:    "/images/r77-asset-credit-review-loupe-bright-transparent.webp",
     assetAlt: "",
     floatDur: "5.2s",
     glowStyle: {
@@ -71,7 +71,7 @@ const STEPS: ProcessStep[] = [
     heading:  "Draw in USDC or $APPEX.",
     body:     "Submit a draw request inside the approved facility specifying amount, term, and payout currency. The vault releases USDC, or $APPEX at the borrower's option, into the borrower wallet. No per-draw re-underwriting while facility terms hold. Every draw settles on the fee curve agreed during onboarding.",
     bullet:   "USDC funds routed downstream in the format each recipient wants. $APPEX draws clear directly into the borrower's treasury.",
-    asset:    "/images/r22-step-fund-draw-transparent.webp",
+    asset:    "/images/r81-asset-step-fund-draw-bright-transparent.webp",
     assetAlt: "",
     floatDur: "5.6s",
     glowStyle: {
@@ -84,7 +84,7 @@ const STEPS: ProcessStep[] = [
     heading:  "Principal plus fees, one event.",
     body:     "When the borrower's customer pays, the borrower repays principal plus LP yield fee plus protocol fee in a single event. Paying the protocol fee in $APPEX applies a twenty-five percent discount. The facility stays open for the next draw.",
     bullet:   "Early collection is rewarded. Capital turns faster; the next draw arrives sooner.",
-    asset:    "/images/r38-asset-principal-fees-bundle-transparent.webp",
+    asset:    "/images/r68-asset-principal-fees-bundle-bright-transparent.webp",
     assetAlt: "Principal plus fees returned as a single bundled transfer",
     floatDur: "6s",
     glowStyle: {
@@ -185,7 +185,7 @@ export function BorrowerProcess(): React.JSX.Element {
 
         .bor-process__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -312,11 +312,12 @@ export function BorrowerProcess(): React.JSX.Element {
           outline-offset: 3px;
         }
 
-        /* Tab label below button */
+        /* Tab label below button.
+         * Mobile audit: bumped from 12px to 14px minimum. */
         .bor-process__tab-label {
           margin-top: 10px;
           font-family: var(--font-display-family);
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 1.5px;
           text-transform: uppercase;
@@ -395,7 +396,7 @@ export function BorrowerProcess(): React.JSX.Element {
 
         .bor-process__step-num {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -530,7 +531,7 @@ export function BorrowerProcess(): React.JSX.Element {
 
       <section className="bor-process" id="process">
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"
@@ -556,7 +557,7 @@ export function BorrowerProcess(): React.JSX.Element {
           {/* Stepper widget */}
           <div className="bor-process__widget">
             <Image
-              src="/images/r17-texture-rhythm.png"
+              src="/images/r17-texture-rhythm.webp"
               alt="" aria-hidden="true"
               fill
               sizes="(max-width: 767px) 50vw, 540px"

@@ -134,7 +134,7 @@ export function PostCTA({ frontmatter }: PostCTAProps): React.JSX.Element {
 
         .post-cta__eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;
@@ -160,11 +160,12 @@ export function PostCTA({ frontmatter }: PostCTAProps): React.JSX.Element {
           align-items: center;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-cta__primary {
           display: inline-flex;
           align-items: center;
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -184,11 +185,12 @@ export function PostCTA({ frontmatter }: PostCTAProps): React.JSX.Element {
           outline-offset: 3px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-cta__secondary {
           display: inline-flex;
           align-items: center;
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -215,7 +217,7 @@ export function PostCTA({ frontmatter }: PostCTAProps): React.JSX.Element {
 
       <section id="cta" className="post-cta">
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           className="post-cta__texture"

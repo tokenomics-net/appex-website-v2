@@ -66,6 +66,17 @@ export function PostBody({ content, headings }: PostBodyProps): React.JSX.Elemen
         .post-body-prose {
           min-width: 0;
         }
+
+        /* Mobile audit: constrain blog body line-length on mobile.
+         * Pixel 5 (393px) rendered prose near-edge-to-edge within the grid.
+         * max-width + horizontal padding on the prose column keeps line-length
+         * in the 50-75ch readable range on narrow viewports. */
+        @media (max-width: 767px) {
+          .post-body-prose {
+            max-width: 65ch;
+            padding: 0 4px;
+          }
+        }
       `}</style>
       <style>{mdxBodyStyles}</style>
 

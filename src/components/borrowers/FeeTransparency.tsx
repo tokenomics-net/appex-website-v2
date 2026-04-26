@@ -99,7 +99,7 @@ export function FeeTransparency(): React.JSX.Element {
 
         .fee-transparency__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -165,7 +165,9 @@ export function FeeTransparency(): React.JSX.Element {
           margin-top: 10px;
         }
 
-        /* Wiki footer inside example */
+        /* Wiki footer inside example.
+         * Mobile audit exception: 12px retained -- italic footnote at 55% opacity,
+         * not body content. Equivalent to a chart footnote annotation. */
         .fee-transparency__wiki {
           display: block;
           font-family: var(--font-body-family);
@@ -236,7 +238,7 @@ export function FeeTransparency(): React.JSX.Element {
 
       <section className="fee-transparency" id="fee-transparency">
         <Image
-          src="/images/r17-texture-energy.png"
+          src="/images/r17-texture-energy.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"
@@ -286,7 +288,7 @@ export function FeeTransparency(): React.JSX.Element {
             {/* Right: staking-pair-disc  --  "two fees, one discount" (library-reuse R1.6) */}
             <div className="fee-transparency__thumbnail-col" aria-hidden="true">
               <Image
-                src="/images/r22-util-lower-fees-transparent.webp"
+                src="/images/r62-asset-util-lower-fees-bright-transparent.webp"
                 alt="" aria-hidden="true"
                 role="presentation"
                 width={380}

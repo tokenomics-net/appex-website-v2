@@ -34,13 +34,13 @@ import { EcosystemCrosslinks }   from "@/components/appex/EcosystemCrosslinks";
 import { ClosingCTA }            from "@/components/appex/ClosingCTA";
 
 export const metadata: Metadata = {
-  title:       "$APPEX | Fixed Supply, Real Utility",
+  title:       "$APPEX: Fixed Supply, Real Utility",
   description: "1,000,000,000 supply. No minting. No emissions. Pay fees in $APPEX for a 25% discount. Stake for rewards. Vote on protocol changes.",
   alternates: {
     canonical: `${BASE_URL}/appex`,
   },
   openGraph: {
-    title:       "$APPEX | Fixed Supply, Real Utility",
+    title:       "$APPEX: Fixed Supply, Real Utility | appeX Protocol",
     description: "1,000,000,000 supply. No minting. No emissions. Pay fees in $APPEX for a 25% discount. Stake for rewards. Vote on protocol changes.",
     type:        "website",
     url:         `${BASE_URL}/appex`,
@@ -49,9 +49,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "$APPEX | Fixed Supply, Real Utility",
+    title:       "$APPEX: Fixed Supply, Real Utility | appeX Protocol",
     description: "1,000,000,000 supply. No minting. No emissions. Pay fees in $APPEX for a 25% discount. Stake for rewards. Vote on protocol changes.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

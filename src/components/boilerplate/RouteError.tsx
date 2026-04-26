@@ -41,7 +41,7 @@ export function RouteError({ error, unstable_retry }: RouteErrorProps) {
       <p
         style={{
           fontFamily:    "var(--font-display-family, system-ui)",
-          fontSize:      "12px",
+          fontSize:      "14px",
           fontWeight:    600,
           letterSpacing: "0.12em",
           textTransform: "uppercase",

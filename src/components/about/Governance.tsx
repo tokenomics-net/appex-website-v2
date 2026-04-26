@@ -114,7 +114,7 @@ export function Governance(): React.JSX.Element {
 
         .about-gov__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -234,6 +234,8 @@ export function Governance(): React.JSX.Element {
           align-items: center;
           justify-content: center;
           font-family: var(--font-display-family);
+          /* Mobile audit exception: 13px retained -- number inside a 44x44 circular
+           * UI chip, not body content. The chip itself is the affordance. */
           font-size: 13px;
           font-weight: 600;
           color: var(--ax-capital-yellow, #FED607);
@@ -263,7 +265,7 @@ export function Governance(): React.JSX.Element {
 
         {/* Layer 0: r18-texture-horizon at 18% */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

@@ -8,7 +8,7 @@
  * Scene: r21-scene-token-apex.png at 100% (library reuse  --  token-apex ceremonial register)
  * Floating anchor asset: r21-asset-anchor-borrower-transparent.webp at 380-440px
  * Layout: 55/45 two-up (glass copy panel left, scene with floating asset right)
- * Three-row mini-list with icons: r22-step-gap, r22-step-bridge, r22-step-fund-draw
+ * Three-row mini-list with icons: r67-asset-step-gap-bright, r60-asset-step-bridge-bright, r81-asset-step-fund-draw-bright
  * NARROWLY SCOPED FUTURE TENSE per decisions.md §10a (appLockr is pre-launch):
  *   "will be," "will draw," "will receive" in appLockr section ONLY.
  * NO CTA, NO outbound link, NO appLockr wordmark.
@@ -123,7 +123,7 @@ export function ApplockrAnchor(): React.JSX.Element {
 
         .applockr__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -268,7 +268,7 @@ export function ApplockrAnchor(): React.JSX.Element {
 
         {/* Scene */}
         <Image
-          src="/images/r21-scene-token-apex.png"
+          src="/images/r21-scene-token-apex.webp"
           alt="" aria-hidden="true"
           role="presentation"
           fill
@@ -317,7 +317,7 @@ export function ApplockrAnchor(): React.JSX.Element {
               <ul className="applockr__mini-list" aria-label="How appLockr uses the vault">
                 <li className="applockr__mini-row">
                   <Image
-                    src="/images/r22-step-gap-transparent.webp"
+                    src="/images/r67-asset-step-gap-bright-transparent.webp"
                     alt="" aria-hidden="true"
                     role="presentation"
                     width={48}
@@ -325,6 +325,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                     quality={75}
                     className="applockr__mini-icon"
                     style={{ objectFit: "contain" }}
+                    loading="lazy"
                   />
                   <div className="applockr__mini-copy">
                     <span className="applockr__mini-label">The gap</span>
@@ -333,7 +334,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                 </li>
                 <li className="applockr__mini-row">
                   <Image
-                    src="/images/r22-step-bridge-transparent.webp"
+                    src="/images/r60-asset-step-bridge-bright-transparent.webp"
                     alt="" aria-hidden="true"
                     role="presentation"
                     width={48}
@@ -341,6 +342,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                     quality={75}
                     className="applockr__mini-icon"
                     style={{ objectFit: "contain" }}
+                    loading="lazy"
                   />
                   <div className="applockr__mini-copy">
                     <span className="applockr__mini-label">The draw</span>
@@ -349,7 +351,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                 </li>
                 <li className="applockr__mini-row">
                   <Image
-                    src="/images/r22-step-fund-draw-transparent.webp"
+                    src="/images/r81-asset-step-fund-draw-bright-transparent.webp"
                     alt="" aria-hidden="true"
                     role="presentation"
                     width={48}
@@ -357,6 +359,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                     quality={75}
                     className="applockr__mini-icon"
                     style={{ objectFit: "contain" }}
+                    loading="lazy"
                   />
                   <div className="applockr__mini-copy">
                     <span className="applockr__mini-label">The payout</span>
@@ -369,7 +372,7 @@ export function ApplockrAnchor(): React.JSX.Element {
             {/* Right: floating anchor asset composited against scene */}
             <div className="applockr__asset-col" aria-hidden="true">
               <Image
-                src="/images/r39-asset-first-stake-anchor-transparent.webp"
+                src="/images/r52-asset-first-stake-anchor-bright-transparent.webp"
                 alt="literal maritime anchor"
                 role="presentation"
                 width={440}
@@ -377,6 +380,7 @@ export function ApplockrAnchor(): React.JSX.Element {
                 quality={85}
                 className="applockr__anchor-asset"
                 style={{ objectFit: "contain" }}
+                loading="lazy"
               />
             </div>
 

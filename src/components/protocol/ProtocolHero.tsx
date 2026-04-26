@@ -123,7 +123,7 @@ export function ProtocolHero(): React.JSX.Element {
         /* Eyebrow */
         .proto-hero__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -305,7 +305,7 @@ export function ProtocolHero(): React.JSX.Element {
 
         {/* Floating hero asset  --  protocol core (double-use: also in EcosystemCrosslinks) */}
         <Image
-          src="/images/r36-asset-protocol-core-transparent.webp"
+          src="/images/r75-asset-protocol-core-bright-transparent.webp"
           alt="The protocol core  --  connected to every surface of the protocol"
           width={440}
           height={440}

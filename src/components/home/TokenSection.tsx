@@ -7,11 +7,11 @@
  * Floating token: r22-appex-token-edited-transparent.webp (replaces r19 medallion)
  *   translateY ONLY  --  NO rotation, NO spin, NO full rotation
  * 5 utility cards (expanded from 3) with r22 utility images
- *   1. r22-util-liquidity-transparent.webp   --  "Backed by real liquidity"
+ *   1. r82-asset-util-liquidity-bright-transparent.webp   --  "Backed by real liquidity"
  *   2. r22-util-earn-fees-transparent.webp   --  "Earn protocol fees"
- *   3. r22-util-lower-fees-transparent.webp  --  "25% lower fees"
+ *   3. r62-asset-util-lower-fees-bright-transparent.webp  --  "25% lower fees"
  *   4. r22-util-staking-transparent.webp     --  "Staking rewards"
- *   5. r22-util-governance-transparent.webp  --  "Governance rights"
+ *   5. r53-asset-util-governance-bright-transparent.webp  --  "Governance rights"
  * CTA: "About $APPEX" -> /appex (was "Token details")
  * Copy: PRESENT TENSE per decisions.md §2
  */
@@ -28,31 +28,31 @@ interface UtilityCardData {
 
 const UTILITY_CARDS: UtilityCardData[] = [
   {
-    icon:    "/images/r22-util-liquidity-transparent.webp",
+    icon:    "/images/r82-asset-util-liquidity-bright-transparent.webp",
     iconAlt: "Liquidity utility  --  backed by real market activity",
     title:   "Backed by real liquidity",
     body:    "Every payment through appeX is backed by $APPEX purchased on the open market.",
   },
   {
-    icon:    "/images/r19-asset-yield-curve-wedge-transparent.webp",
+    icon:    "/images/r44-asset-yield-curve-wedge-bright-transparent.webp",
     iconAlt: "Earn protocol fees utility",
     title:   "Earn protocol fees",
     body:    "LPs stake $APPEX to receive their share of protocol fees distributed to stakers.",
   },
   {
-    icon:    "/images/r22-util-lower-fees-transparent.webp",
+    icon:    "/images/r62-asset-util-lower-fees-bright-transparent.webp",
     iconAlt: "25% lower fees utility",
     title:   "25% lower fees",
     body:    "Protocol fees paid in $APPEX are 25% lower.",
   },
   {
-    icon:    "/images/r39-asset-staking-lock-transparent.webp",
+    icon:    "/images/r79-asset-staking-lock-bright-transparent.webp",
     iconAlt: "Literal lock  --  staking rewards",
     title:   "Staking rewards",
     body:    "Stake $APPEX with LP tokens to receive staking emissions.",
   },
   {
-    icon:    "/images/r22-util-governance-transparent.webp",
+    icon:    "/images/r53-asset-util-governance-bright-transparent.webp",
     iconAlt: "Governance rights utility",
     title:   "Governance rights",
     body:    "Staked token holders vote on vault parameters and protocol decisions.",
@@ -137,7 +137,7 @@ export function TokenSection(): React.JSX.Element {
 
         .token-section__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -253,7 +253,7 @@ export function TokenSection(): React.JSX.Element {
         }
 
         .token-section__card-body {
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.55;
           color: rgba(185,160,204,0.65);
           margin: 0;
@@ -268,7 +268,7 @@ export function TokenSection(): React.JSX.Element {
       <section className="token-section" aria-labelledby="token-heading">
         {/* Scene at 100% opacity */}
         <Image
-          src="/images/r21-scene-token-apex.png"
+          src="/images/r21-scene-token-apex.webp"
           alt="" aria-hidden="true"
           fill
           className="token-section__scene"
@@ -295,7 +295,7 @@ export function TokenSection(): React.JSX.Element {
           {/* Floating token  --  translateY ONLY, explicitly NO rotation */}
           <div className="token-section__token-wrap">
             <Image
-              src="/images/r22-appex-token-edited-transparent.webp"
+              src="/images/r22-appex-token-bright-transparent.webp"
               alt="appeX token with logomark"
               width={320}
               height={320}

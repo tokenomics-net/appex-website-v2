@@ -30,13 +30,13 @@ import { StakingTeaser }   from "@/components/lps/StakingTeaser";
 import { LPsClosingCTA }   from "@/components/lps/LPsClosingCTA";
 
 export const metadata: Metadata = {
-  title:       "Earn from real borrower fees | appeX LPs",
+  title:       "Earn from real borrower fees",
   description: "Deposit USDC from 1 dollar. Yield comes from fees on credit-reviewed advances, not emissions. NAV grows per advance. Exit any time.",
   alternates: {
     canonical: `${BASE_URL}/lps`,
   },
   openGraph: {
-    title:       "Earn from real borrower fees | appeX LPs",
+    title:       "Earn from real borrower fees | appeX Protocol",
     description: "Deposit USDC from 1 dollar. Yield comes from fees on credit-reviewed advances, not emissions. NAV grows per advance. Exit any time.",
     type:        "website",
     url:         `${BASE_URL}/lps`,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "Earn from real borrower fees | appeX LPs",
+    title:       "Earn from real borrower fees | appeX Protocol",
     description: "Deposit USDC from 1 dollar. Yield comes from fees on credit-reviewed advances, not emissions. NAV grows per advance. Exit any time.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

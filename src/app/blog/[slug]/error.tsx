@@ -1,14 +1,20 @@
 "use client";
+// "use client" required -- Next.js Error Boundary API requires client-side state.
+// Justification: useEffect for logging, unstable_retry() for recovery (Next.js 16 API).
 
 import { useEffect } from "react";
 import Link from "next/link";
 
+// Next.js 16 uses unstable_retry, not reset.
+// reset existed in Next.js 13-15. Using reset here causes a TypeError in production
+// because the prop is undefined -- the "Try again" button silently does nothing
+// (or crashes the error boundary itself).
 interface ErrorProps {
   error: Error & { digest?: string };
-  reset: () => void;
+  unstable_retry: () => void;
 }
 
-export default function PostError({ error, reset }: ErrorProps) {
+export default function PostError({ error, unstable_retry }: ErrorProps) {
   useEffect(() => {
     console.error(error);
   }, [error]);
@@ -30,7 +36,7 @@ export default function PostError({ error, reset }: ErrorProps) {
       <p
         style={{
           fontFamily: "var(--font-display-family, system-ui)",
-          fontSize: "12px",
+          fontSize: "14px",
           fontWeight: 600,
           letterSpacing: "0.12em",
           textTransform: "uppercase",
@@ -42,7 +48,7 @@ export default function PostError({ error, reset }: ErrorProps) {
       </p>
       <div style={{ display: "flex", gap: "16px", flexWrap: "wrap", justifyContent: "center" }}>
         <button
-          onClick={reset}
+          onClick={unstable_retry}
           style={{
             padding: "12px 24px",
             background: "transparent",

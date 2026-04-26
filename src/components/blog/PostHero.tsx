@@ -12,6 +12,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { PostFrontmatter } from "@/lib/blog/posts";
+import { formatDateLong } from "@/lib/formatters";
 import type React from "react";
 
 interface PostHeroProps {
@@ -28,15 +29,6 @@ function categoryLabel(cat: string): string {
     governance: "Governance",
   };
   return map[cat] ?? cat;
-}
-
-function formatDateLong(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleDateString("en-US", {
-    month: "long",
-    day: "numeric",
-    year: "numeric",
-  });
 }
 
 export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
@@ -89,13 +81,13 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
           margin: 0 auto;
         }
 
-        /* Back link */
+        /* Back link. Mobile audit: bumped from 13px to 14px minimum. */
         .post-hero__back {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           text-decoration: none;
           margin-bottom: 24px;
@@ -113,6 +105,7 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
         }
 
         /* Breadcrumb */
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .post-hero__breadcrumb ol {
           display: flex;
           align-items: center;
@@ -121,7 +114,7 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
           padding: 0;
           margin: 0 0 20px;
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           flex-wrap: wrap;
         }
@@ -141,7 +134,7 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
           display: inline-flex;
           align-items: center;
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 2px;
           padding: 4px 10px;
@@ -171,10 +164,10 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
           margin-bottom: 24px;
         }
 
-        /* Meta bar */
+        /* Meta bar. Mobile audit: bumped from 13px to 14px minimum. */
         .post-hero__meta {
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           letter-spacing: 0.02em;
           margin-bottom: 16px;
@@ -214,7 +207,7 @@ export function PostHero({ frontmatter }: PostHeroProps): React.JSX.Element {
 
       <section id="post-hero" className="post-hero">
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           className="post-hero__texture"

@@ -1,25 +1,38 @@
 /**
  * app/terms/page.tsx
  *
- * Terms and Conditions  --  wired from outputs/appex-website-build/copy/pre-launch/terms-conditions.md
- * Stays noindex until client confirms [TO CONFIRM] items (entity legal name,
- * governing jurisdiction, blocked jurisdiction list, arbitration body + seat).
- * Those items render as yellow-highlighted .pending spans via LegalLayout.
+ * Terms and Conditions  --  copy from outputs/appex-asset-harmonization/legal-copy/terms.md
+ * Indexed: robots set to index/follow per legal review sign-off.
  *
- * NOTE: Sections 7 (limitation of liability), 10 (geographic restrictions),
- * and 11 (arbitration) are flagged for legal review before publishing.
+ * [TO CONFIRM] items remain in the copy (jurisdiction, arbitration body/seat,
+ * contact email, entity address) and are highlighted via LegalLayout .pending spans.
  */
 
 import type { Metadata } from "next";
 import { BASE_URL } from "@/lib/site-config";
+import { OG_IMAGE } from "@/lib/og";
 import { LegalLayout } from "@/components/legal/LegalLayout";
 
 export const metadata: Metadata = {
-  title:       "Terms and Conditions | appeX Protocol",
-  description: "Terms governing use of the appex.finance website. These terms apply to the site only, not the onchain protocol.",
-  robots: { index: false, follow: false },
+  title:       "Terms and Conditions",
+  description: "Terms governing use of the appex.finance website and the appeX Protocol interface. Read before accessing the site.",
+  robots: { index: true, follow: true },
   alternates: {
     canonical: `${BASE_URL}/terms`,
+  },
+  openGraph: {
+    title:       "Terms and Conditions | appeX Protocol",
+    description: "Terms governing use of the appex.finance website and the appeX Protocol interface. Read before accessing the site.",
+    type:        "website",
+    url:         `${BASE_URL}/terms`,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    site:        "@appexprotocol",
+    title:       "Terms and Conditions | appeX Protocol",
+    description: "Terms governing use of the appex.finance website and the appeX Protocol interface. Read before accessing the site.",
+    images:      [OG_IMAGE.url],
   },
 };
 
@@ -27,213 +40,348 @@ export default function TermsPage(): React.JSX.Element {
   return (
     <LegalLayout title="Terms and Conditions">
 
-      <h2>1. Acceptance</h2>
       <p>
-        By accessing appex.finance (the &ldquo;Site&rdquo;), you agree to these Terms. If you do
-        not agree, do not use the Site.
-      </p>
-      <p>
-        These Terms apply to the Site only. They do not govern the onchain appeX
-        Protocol itself. Use of the protocol is governed by its smart contracts,
-        which execute autonomously on public blockchains.
-      </p>
-      <p>
-        <mark className="pending">TO CONFIRM: governing entity legal name</mark>
+        <strong>Effective date:</strong> April 24, 2026
+        <br />
+        <strong>Entity:</strong> appeX Protocol
       </p>
 
-      <h2>2. What the Site is</h2>
       <p>
-        The Site is a public informational resource about the appeX Protocol. It
-        describes how the protocol works, who it serves, and what the $APPEX token
-        does.
+        These Terms and Conditions (&ldquo;Terms&rdquo;) govern your access to and use of the website
+        located at appex.finance, related subdomains, and any software interfaces published by
+        appeX Protocol (collectively, the &ldquo;Site&rdquo;). The Site provides information about, and a
+        user interface for, the appeX protocol, a set of smart contracts deployed on public
+        blockchain networks (the &ldquo;Protocol&rdquo;).
       </p>
       <p>
-        The Site is not the protocol. The protocol is a set of smart contracts
-        deployed on public blockchains. Interacting with the protocol requires a
-        self-custodial wallet and happens at the contract layer, not on this Site.
-      </p>
-      <p>
-        The Site does not hold your funds. The Site does not execute trades. The
-        Site does not have user accounts. Nothing you can click on this Site moves
-        money or takes custody of assets.
+        Read these Terms carefully. By accessing the Site or interacting with the Protocol
+        through an interface we publish, you agree to be bound by them. If you do not agree,
+        do not use the Site.
       </p>
 
-      <h2>3. Not financial, legal, or tax advice</h2>
+      <h2>1. Acceptance of Terms</h2>
       <p>
-        Nothing on this Site is financial advice, legal advice, tax advice,
-        investment advice, or a solicitation. Copy on the Site describes how the
-        protocol operates and what participation involves. That is information, not
-        a recommendation.
-      </p>
-      <p>
-        Using appeX, depositing USDC as a liquidity provider, borrowing against
-        receivables, holding or staking $APPEX, participating in governance: all of
-        these are financial activities that carry risk. Whether they are appropriate
-        for you depends on facts we do not know. Consult your own licensed advisors.
+        Your use of the Site constitutes your agreement to these Terms and to our{" "}
+        <a href="/privacy">Privacy Policy</a> and{" "}
+        <a href="/disclosures">Disclosures</a>, each incorporated by reference. We may update
+        these Terms as described in Section 12. Continued use of the Site after an update
+        takes effect means you accept the revised Terms.
       </p>
 
-      <h2>4. No advisory or fiduciary relationship</h2>
-      <p>
-        Reading the Site does not create an advisory, fiduciary, agency, or client
-        relationship between you and appeX, its contributors, or anyone associated
-        with the protocol.
-      </p>
-
-      <h2>5. DeFi risk acknowledgment</h2>
-      <p>
-        By using the protocol, you accept that DeFi carries material risks. The
-        canonical list lives at appex.finance/about and is maintained in the
-        protocol&rsquo;s risk framework. In summary:
-      </p>
+      <h2>2. Eligibility</h2>
+      <p>You may use the Site only if all of the following are true:</p>
       <ul>
         <li>
-          <strong>Smart contract risk.</strong> Audits reduce risk; they do not
-          eliminate it. Code can contain bugs or undiscovered vulnerabilities.
-          Deposits can be lost.
+          You are at least 18 years old and have the legal capacity to enter into a binding
+          contract in your jurisdiction.
         </li>
         <li>
-          <strong>Borrower default risk.</strong> Credit review reduces risk; it does
-          not eliminate it. Borrowers can fail to repay. Losses are socialized across
-          LP shares.
+          You are not a resident of, located in, or accessing the Site from any jurisdiction
+          subject to comprehensive sanctions administered by the United States, the United
+          Kingdom, the European Union, or the United Nations, including without limitation
+          Cuba, Iran, North Korea, Syria, the Crimea, Donetsk, and Luhansk regions of Ukraine.
         </li>
         <li>
-          <strong>Vault utilization risk.</strong> During periods of high utilization,
-          LP withdrawals may be delayed.
+          You are not listed on any sanctions or restricted-party list maintained by the
+          U.S. Office of Foreign Assets Control (OFAC), the U.S. Department of Commerce,
+          the U.S. Department of State, or any equivalent authority.
         </li>
         <li>
-          <strong>Market risk on $APPEX.</strong> $APPEX is a utility and governance
-          token with a fixed supply. Its market price is volatile and not guaranteed.
+          You are not a U.S. person, or a person accessing the Site from the United States,
+          where access from the United States is restricted for the feature you are attempting
+          to use. Access restrictions are enforced at the frontend layer and may change as our
+          legal posture evolves.
         </li>
         <li>
-          <strong>Oracle and data feed risk.</strong> The protocol relies on offchain
-          information about borrower receivables, which is verified through processes
-          that can fail or be misreported.
-        </li>
-        <li>
-          <strong>Regulatory risk.</strong> The legal and regulatory environment for
-          DeFi is unsettled and varies by jurisdiction. Rules that apply today may
-          change.
-        </li>
-        <li>
-          <strong>DeFi composability risk.</strong> Unborrowed capital may be deployed
-          to third-party DeFi protocols. Those protocols carry their own risks.
-        </li>
-        <li>
-          <strong>Concentration risk.</strong> Early in the protocol&rsquo;s life,
-          exposure to specific borrowers or sectors may be concentrated.
+          You are not prohibited from using the Site or the Protocol under the laws of any
+          jurisdiction that applies to you.
         </li>
       </ul>
-      <p>Do not deposit more than you can afford to lose. This is not boilerplate. It is accurate.</p>
+      <p>If any of the above ceases to be true, you must stop using the Site immediately.</p>
 
-      <h2>6. No warranty</h2>
+      <h2>3. Description of Services</h2>
       <p>
-        The Site and its content are provided &ldquo;as is&rdquo; and &ldquo;as available,&rdquo; with no
-        warranty of any kind, express or implied. That includes no warranty of
-        accuracy, completeness, fitness for a particular purpose, merchantability,
-        or non-infringement.
+        The Site is an informational website and a frontend interface. Through the Site, you
+        can learn about the Protocol, read documentation, view public data, and connect a
+        self-custody wallet to interact with Protocol smart contracts.
       </p>
       <p>
-        Information on the Site may be out of date. The protocol can change faster
-        than the marketing Site can. The authoritative source for protocol behavior
-        is always the deployed smart contract code.
+        The Protocol is a set of smart contracts that, among other things, permit holders of
+        certain digital assets to deposit those assets into a liquidity vault, and permit
+        approved counterparties to draw capital from that vault against verified receivables.
+        The Protocol operates autonomously according to the logic encoded in its smart contracts.
       </p>
-
-      <h2>7. Limitation of liability</h2>
-      <p>
-        To the fullest extent permitted by law, appeX and its contributors are not
-        liable for any direct, indirect, incidental, special, consequential, or
-        punitive damages arising from your use of the Site or the protocol. That
-        includes loss of funds, loss of data, loss of profits, loss of goodwill,
-        and any other loss, whether foreseen or not.
-      </p>
-      <p>
-        Your sole remedy for dissatisfaction with the Site is to stop using it.
-      </p>
-
-      <h2>8. Intellectual property</h2>
-      <p>
-        The appeX name, logo, and brand marks are property of appeX{" "}
-        <mark className="pending">TO CONFIRM: legal entity</mark>. The Site&rsquo;s text,
-        layout, and visual design are, unless marked otherwise, property of appeX.
-      </p>
-      <p>
-        You may quote short passages from the Site for commentary, research,
-        journalism, and education under fair use. You may not copy the Site
-        wholesale, clone it, or present appeX&rsquo;s copy as your own.
-      </p>
-      <p>
-        The underlying smart contract code for the protocol is open source, licensed
-        separately on its repository. The Site terms do not restrict your rights
-        under that license.
-      </p>
-
-      <h2>9. Prohibited uses</h2>
-      <p>Do not:</p>
+      <p>appeX Protocol does not:</p>
       <ul>
-        <li>Use the Site to break the law in your jurisdiction.</li>
-        <li>Use the Site to impersonate appeX or any other entity.</li>
+        <li>Hold, custody, or control your digital assets.</li>
+        <li>Execute transactions on your behalf.</li>
+        <li>Provide banking, brokerage, investment advisory, or money transmission services.</li>
+        <li>Guarantee any outcome, yield, price, or return from interaction with the Protocol.</li>
+      </ul>
+      <p>
+        When you interact with the Protocol, you do so directly with the smart contracts
+        through your own wallet and at your own risk. For a detailed description of Protocol
+        mechanics, refer to our published documentation.
+      </p>
+
+      <h2>4. User Responsibilities</h2>
+      <p>You are solely responsible for:</p>
+      <ul>
         <li>
-          Scrape the Site at a rate that burdens the host (reasonable automated
-          indexing by search and LLM crawlers listed in robots.txt is welcome).
+          <strong>Your wallet and keys.</strong> You control your private keys, seed phrases,
+          and any device on which they are stored. We have no ability to recover, reset, or
+          replace lost keys. Loss of your keys may result in permanent loss of access to your
+          assets.
         </li>
         <li>
-          Introduce malware, exploits, or probes intended to compromise the Site or
-          its visitors.
+          <strong>Wallet security.</strong> You are responsible for maintaining the security
+          of any wallet you use to interact with the Site or the Protocol, including protecting
+          it from phishing, malware, and unauthorized access.
         </li>
         <li>
-          Use the Site to launder proceeds of crime, finance terrorism, or evade
-          sanctions.
+          <strong>Your own diligence.</strong> Before depositing, staking, borrowing, or
+          otherwise transacting, you are responsible for evaluating the Protocol&rsquo;s risks,
+          reading its documentation and disclosures, and reaching your own conclusions. Nothing
+          we publish is investment advice or a recommendation.
+        </li>
+        <li>
+          <strong>Taxes.</strong> You are responsible for determining what taxes apply to
+          your transactions and for filing and paying those taxes. We do not provide tax
+          advice and do not issue tax forms (such as U.S. Form 1099) to users.
+        </li>
+        <li>
+          <strong>Compliance with law.</strong> You are responsible for using the Site and
+          the Protocol in compliance with all laws, regulations, and rules that apply to you,
+          including sanctions, tax, and securities laws in your jurisdiction.
         </li>
       </ul>
 
-      <h2>10. Geographic restrictions</h2>
+      <h2>5. Prohibited Uses</h2>
+      <p>You agree not to:</p>
+      <ul>
+        <li>Use the Site or the Protocol in violation of any law, regulation, or sanctions program.</li>
+        <li>
+          Use the Site or the Protocol for money laundering, terrorist financing, fraud,
+          market manipulation, or any other unlawful purpose.
+        </li>
+        <li>
+          Attempt to access the Site from a prohibited jurisdiction, including by using a
+          VPN, proxy, or other technical means to circumvent geographic restrictions.
+        </li>
+        <li>
+          Interfere with, disrupt, or attempt to gain unauthorized access to the Site, its
+          infrastructure, or any account, wallet, or smart contract.
+        </li>
+        <li>
+          Exploit a bug, vulnerability, or error in the Site or the Protocol for gain. If
+          you discover a vulnerability, report it through our bug bounty program if one is
+          active, or by contacting us at the address below.
+        </li>
+        <li>
+          Reverse engineer, decompile, or attempt to extract source code from any proprietary
+          component of the Site, except to the extent that restriction is not permitted by law.
+        </li>
+        <li>
+          Use any robot, scraper, or automated means to access the Site in a manner that
+          degrades service for others.
+        </li>
+        <li>
+          Represent yourself as an agent, employee, or affiliate of appeX Protocol when you
+          are not.
+        </li>
+      </ul>
       <p>
-        Access to the protocol may be restricted in certain jurisdictions. The Site
-        enforces geographic restrictions at the frontend layer for regions where
-        participation is prohibited or materially restricted. You are responsible
-        for compliance with the laws of your own jurisdiction.
-      </p>
-      <p>
-        <mark className="pending">TO CONFIRM: specific blocked jurisdictions. Standard DeFi practice is to geoblock sanctioned countries and, in some deployments, US persons. Client to confirm the final blocklist before launch.</mark>
-      </p>
-
-      <h2>11. Dispute resolution and arbitration</h2>
-      <p>
-        Any dispute arising out of or relating to these Terms or your use of the
-        Site will be resolved by binding individual arbitration, not in court. You
-        waive the right to participate in a class action or class arbitration.
-      </p>
-      <p>
-        Arbitration will be administered by{" "}
-        <mark className="pending">TO CONFIRM: arbitration body (common choices: AAA, JAMS, or ICC depending on jurisdiction)</mark>.
-        The seat of arbitration will be{" "}
-        <mark className="pending">TO CONFIRM: seat of arbitration</mark>.
-        The language of arbitration will be English.
-      </p>
-      <p>
-        Nothing in this section prevents either party from seeking injunctive relief
-        in a court of competent jurisdiction to protect intellectual property rights.
-      </p>
-
-      <h2>12. Governing law</h2>
-      <p>
-        <mark className="pending">TO CONFIRM: jurisdiction for governing law</mark>{" "}
-        These Terms are governed by the laws of that jurisdiction, without regard to
-        conflict of law rules.
-      </p>
-
-      <h2>13. Changes to these Terms</h2>
-      <p>
-        We may update these Terms. When we do, we will change the effective date
-        above. Material changes will be posted visibly on the Site before they take
-        effect. Your continued use of the Site after an update means you accept the
-        new Terms.
+        We may block, suspend, or restrict access to the Site at our discretion, including
+        where we have reason to believe a user has violated these Terms.
       </p>
 
-      <h2>14. Severability</h2>
+      <h2>6. Intellectual Property</h2>
       <p>
-        If any part of these Terms is found unenforceable, the rest remains in
-        effect.
+        The Site, including its text, graphics, logos, trademarks, images, software, and
+        design, is owned by appeX Protocol or its licensors and is protected by copyright,
+        trademark, and other laws. Except as expressly permitted, you may not copy, modify,
+        distribute, sell, or create derivative works from any part of the Site.
+      </p>
+      <p>
+        &ldquo;appeX&rdquo; and the appeX logomark are trademarks of appeX Protocol. You may not use
+        these marks without prior written permission, except for fair use in news reporting,
+        commentary, or similar purposes.
+      </p>
+      <p>
+        Portions of the Protocol&rsquo;s smart contracts and supporting code may be released under
+        open-source licenses. Those components are governed by the terms of the applicable
+        license, which are provided in the relevant repository.
+      </p>
+      <p>
+        Your wallet address, on-chain transactions, and any content you submit to the
+        Protocol through the Site remain yours.
+      </p>
+
+      <h2>7. Third-Party Services</h2>
+      <p>
+        The Site and the Protocol rely on services, networks, and software operated by third
+        parties, including:
+      </p>
+      <ul>
+        <li>Public blockchain networks (such as Ethereum).</li>
+        <li>Wallet providers and wallet-connection libraries.</li>
+        <li>RPC providers and node operators.</li>
+        <li>Indexers, oracles, and data providers.</li>
+        <li>Analytics providers (see <a href="/privacy">Privacy Policy</a>).</li>
+      </ul>
+      <p>
+        appeX Protocol does not control these third parties and is not responsible for their
+        availability, performance, fees, or conduct. Your use of a third-party service may be
+        governed by that third party&rsquo;s own terms and privacy policy, which you should review.
+      </p>
+      <p>
+        Network fees (gas) and service charges from third parties are paid by you directly
+        to the relevant network or provider. We do not receive those fees.
+      </p>
+
+      <h2>8. Disclaimers</h2>
+      <p>
+        The Site and any information, tools, or interfaces made available through it are
+        provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis, with all faults and without
+        warranties of any kind, whether express or implied, including warranties of
+        merchantability, fitness for a particular purpose, title, non-infringement, or
+        availability. We do not warrant that the Site will be uninterrupted, error-free, or
+        secure, or that defects will be corrected.
+      </p>
+      <p>
+        We are not your broker, dealer, adviser, fiduciary, or agent. Nothing on the Site is
+        financial, investment, legal, tax, or accounting advice. No fiduciary duty arises
+        between you and appeX Protocol by reason of your use of the Site or the Protocol.
+      </p>
+      <p>
+        The Protocol is experimental software. Smart contracts may contain bugs, and audits
+        do not guarantee their absence. Market conditions, oracle data, borrower behavior,
+        and network events may produce outcomes that differ from expected behavior. You should
+        not deposit, stake, or borrow more than you can afford to lose. Read our{" "}
+        <a href="/disclosures">Disclosures</a> before interacting with the Protocol.
+      </p>
+
+      <h2>9. Limitation of Liability</h2>
+      <p>
+        To the fullest extent permitted by law, appeX Protocol, its affiliates, contributors,
+        and its and their respective officers, directors, employees, and agents will not be
+        liable to you for any indirect, incidental, special, consequential, exemplary, or
+        punitive damages, or for any loss of profits, revenue, data, goodwill, or digital
+        assets, arising out of or in connection with your use of the Site or the Protocol,
+        even if we have been advised of the possibility of such damages.
+      </p>
+      <p>
+        To the fullest extent permitted by law, our aggregate liability for any claim arising
+        out of or related to these Terms, the Site, or the Protocol will not exceed the
+        greater of (a) one hundred U.S. dollars (USD 100) or (b) the total fees, if any,
+        paid by you to appeX Protocol in the twelve months preceding the event giving rise
+        to the claim.
+      </p>
+      <p>
+        Some jurisdictions do not allow the exclusion of certain warranties or the limitation
+        of liability for certain damages. In those jurisdictions, the exclusions and
+        limitations above apply only to the extent permitted.
+      </p>
+      <p>
+        Nothing in these Terms excludes or limits liability that cannot be excluded or
+        limited under applicable law, including liability for fraud, death, or personal
+        injury caused by negligence.
+      </p>
+
+      <h2>10. Indemnification</h2>
+      <p>
+        You agree to indemnify, defend, and hold harmless appeX Protocol and its affiliates,
+        contributors, officers, directors, employees, and agents from and against any claims,
+        damages, losses, liabilities, costs, and expenses (including reasonable attorneys&rsquo;
+        fees) arising out of or related to:
+      </p>
+      <ul>
+        <li>Your access to or use of the Site or the Protocol.</li>
+        <li>Your violation of these Terms.</li>
+        <li>Your violation of any law or the rights of any third party.</li>
+        <li>Any content or information you submit through the Site.</li>
+      </ul>
+      <p>
+        We may assume the exclusive defense and control of any matter otherwise subject to
+        indemnification by you, in which case you agree to cooperate with us at your expense.
+      </p>
+
+      <h2>11. Governing Law and Dispute Resolution</h2>
+      <p>
+        These Terms and any dispute arising out of or related to them, the Site, or the
+        Protocol are governed by the laws of{" "}
+        {/* TODO: replace with finalized copy from legal counsel. Original placeholder: "[JURISDICTION]" */}
+        <mark className="pending">the applicable jurisdiction, to be confirmed upon entity formation</mark>, without regard to conflict of laws
+        principles.
+      </p>
+      <p>
+        {/* TODO: replace with finalized copy from legal counsel. Original placeholder: "[binding arbitration / the courts of JURISDICTION]" */}
+        Any dispute that cannot be resolved informally will be resolved through{" "}
+        <mark className="pending">a formal dispute resolution process to be specified upon entity formation</mark>,
+        and you and appeX Protocol each waive the right to a jury trial and to participate
+        in any class action or class-wide arbitration, to the extent permitted by applicable
+        law.
+      </p>
+      <p>
+        Before initiating a formal proceeding, you agree to contact us at{" "}
+        <a href="mailto:support@appex.finance">support@appex.finance</a> and attempt in good faith to resolve
+        the dispute for at least thirty (30) days.
+      </p>
+      <p>
+        {/* TODO: replace with finalized copy from legal counsel. Original placeholder: "The team will finalize the arbitration provider, seat, language, and class-action waiver language based on the chosen jurisdiction." */}
+        <mark className="pending">
+          Additional dispute resolution details, including applicable rules, seat, and language,
+          are pending finalization with legal counsel.
+        </mark>
+      </p>
+
+      <h2>12. Changes to These Terms</h2>
+      <p>
+        We may update these Terms from time to time. When we do, we will post the revised
+        Terms on the Site and update the &ldquo;Effective date&rdquo; above. For material changes, we
+        will provide additional notice through a banner on the Site or other reasonable means.
+      </p>
+      <p>
+        Your continued use of the Site after the revised Terms take effect constitutes your
+        acceptance of the changes. If you do not agree to the revised Terms, stop using the
+        Site.
+      </p>
+
+      <h2>13. Miscellaneous</h2>
+      <ul>
+        <li>
+          <strong>Severability.</strong> If any provision of these Terms is held to be
+          unenforceable, the remaining provisions will remain in full force and effect.
+        </li>
+        <li>
+          <strong>No waiver.</strong> Our failure to enforce any right or provision of these
+          Terms is not a waiver of that right or provision.
+        </li>
+        <li>
+          <strong>Assignment.</strong> You may not assign or transfer these Terms without our
+          prior written consent. We may assign these Terms without notice.
+        </li>
+        <li>
+          <strong>Entire agreement.</strong> These Terms, together with the Privacy Policy
+          and Disclosures, are the entire agreement between you and appeX Protocol regarding
+          the Site and supersede any prior agreements on that subject.
+        </li>
+        <li>
+          <strong>No partnership.</strong> Nothing in these Terms creates a partnership,
+          joint venture, employment, or agency relationship.
+        </li>
+        <li>
+          <strong>Headings.</strong> Headings are for convenience only and do not affect
+          interpretation.
+        </li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>Questions about these Terms can be directed to:</p>
+      <p>
+        {/* TODO: replace with finalized copy from legal counsel. Original placeholder: "[ENTITY ADDRESS IF PUBLIC]" */}
+        appeX Protocol<br />
+        <a href="mailto:support@appex.finance">support@appex.finance</a>
       </p>
 
     </LegalLayout>

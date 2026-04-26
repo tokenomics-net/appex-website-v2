@@ -223,7 +223,7 @@ export function SupplyDistribution(): React.JSX.Element {
 
         .supply__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -297,10 +297,10 @@ export function SupplyDistribution(): React.JSX.Element {
           stroke-width: 2;
         }
 
-        /* Interaction hint */
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .supply__hint {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-tertiary, rgba(255,255,255,0.35));
           text-align: center;
         }
@@ -356,17 +356,19 @@ export function SupplyDistribution(): React.JSX.Element {
           line-height: 1.2;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .supply__legend-terms {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-tertiary, rgba(255,255,255,0.4));
         }
 
-        /* Detail text shown when active */
+        /* Detail text shown when active.
+         * Mobile audit: bumped from 13px to 14px minimum. */
         .supply__legend-detail {
           grid-column: 1 / -1;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.6;
           color: var(--text-secondary);
           padding-top: 8px;
@@ -395,6 +397,8 @@ export function SupplyDistribution(): React.JSX.Element {
           line-height: 1.2;
         }
 
+        /* Mobile audit exception: 12px retained -- tabular-nums token count in a
+         * data legend row. Analogous to a chart axis annotation, not body content. */
         .supply__legend-tokens {
           display: block;
           font-family: var(--font-display-family);
@@ -430,7 +434,7 @@ export function SupplyDistribution(): React.JSX.Element {
 
         {/* r18-texture-horizon at 18% */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

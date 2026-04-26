@@ -13,9 +13,9 @@
  *
  * Layout: three beats horizontal on desktop, stacked on mobile.
  *   Each beat: one phrase (large) + label + one-line body + library asset.
- *   Beat 1: Draw speed  --  "Hours, not weeks."      asset: r36-asset-hours-not-weeks-transparent.webp
+ *   Beat 1: Draw speed  --  "Hours, not weeks."      asset: r61-asset-hours-not-weeks-bright-transparent.webp
  *   Beat 2: Repayment  --  "Principal plus fees, one event." asset: r37-asset-repayment-return-transparent.webp
- *   Beat 3: $APPEX discount  --  "Twenty-five percent off." asset: r22-util-lower-fees-transparent.webp
+ *   Beat 3: $APPEX discount  --  "Twenty-five percent off." asset: r62-asset-util-lower-fees-bright-transparent.webp
  * Closing row below: comparator sentence.
  * No interactive toggle  --  borrowers have one offer.
  * Copy: copy/borrowers.md Section 2 DRAFT-v2. No wiki pills. No em dashes.
@@ -37,21 +37,21 @@ const BEATS: Beat[] = [
     phrase:  "Hours, not weeks.",
     label:   "From draw request to USDC release inside an approved facility.",
     body:    "Fees and terms are fixed during onboarding, so every draw inside the facility clears on the curve already agreed.",
-    asset:   "/images/r36-asset-hours-not-weeks-transparent.webp",
+    asset:   "/images/r61-asset-hours-not-weeks-bright-transparent.webp",
     floatDur: "5s",
   },
   {
     phrase:  "Principal plus fees, one event.",
     label:   "When the customer pays, the borrower pays the vault. No sweeps, no weekly reconciliation.",
     body:    "No rolling-balance math. No lockbox. No ongoing covenants on the operating business.",
-    asset:   "/images/r38-asset-principal-fees-bundle-transparent.webp",
+    asset:   "/images/r68-asset-principal-fees-bundle-bright-transparent.webp",
     floatDur: "5.4s",
   },
   {
     phrase:  "Twenty-five percent off.",
     label:   "Pay the protocol fee in $APPEX and take the discount on every draw.",
     body:    "Protocol fees clear in USDC or $APPEX. The discount is written into the facility, not offered situationally.",
-    asset:   "/images/r22-util-lower-fees-transparent.webp",
+    asset:   "/images/r62-asset-util-lower-fees-bright-transparent.webp",
     floatDur: "5.8s",
   },
 ];
@@ -159,7 +159,7 @@ export function WhatYouGet(): React.JSX.Element {
 
         .what-get__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -251,10 +251,11 @@ export function WhatYouGet(): React.JSX.Element {
           align-self: start;
         }
 
-        /* Label  --  fixed 48px track; clamped to 2 lines */
+        /* Label  --  fixed 48px track; clamped to 2 lines.
+         * Mobile audit: bumped from 13px to 14px minimum. */
         .what-get__beat-label {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.5;
           color: var(--ax-capital-yellow, #FED607);
           opacity: 0.75;
@@ -314,7 +315,7 @@ export function WhatYouGet(): React.JSX.Element {
 
       <section className="what-get" id="offer" aria-labelledby="what-get-heading">
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

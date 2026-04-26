@@ -14,7 +14,7 @@
  *   Optional italic derivation caption below Stream B
  *
  * Vertical height: ~540-620px desktop (was ~820-960px)  --  35-45% reduction.
- * Asset: r37-asset-two-streams-converge-transparent.webp in convergence column.
+ * Asset: r69-asset-two-streams-converge-r5n-bright-transparent.webp in convergence column.
  * STATIC asset per Pass 6 site-wide float rule  --  only hero assets float.
  * Copy: copy/lps.md Section 2. Present tense. No em dashes.
  */
@@ -101,7 +101,7 @@ export function WhatYouEarn(): React.JSX.Element {
 
         .what-earn__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -171,9 +171,10 @@ export function WhatYouEarn(): React.JSX.Element {
           color: transparent;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .what-earn__stat-label {
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -215,6 +216,8 @@ export function WhatYouEarn(): React.JSX.Element {
           margin-top: 12px;
         }
 
+        /* Mobile audit exception: 11px retained -- italic caption/footnote below
+         * a data callout. Not body content; analogous to chart footnote. */
         .what-earn__caption p {
           font-family: var(--font-body-family);
           font-size: 11px;
@@ -249,7 +252,7 @@ export function WhatYouEarn(): React.JSX.Element {
       <section className="what-earn" id="yield" aria-labelledby="what-earn-heading">
 
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"
@@ -291,7 +294,7 @@ export function WhatYouEarn(): React.JSX.Element {
             {/* Convergence  --  center column */}
             <div className="what-earn__convergence">
               <Image
-                src="/images/r37-asset-two-streams-converge-transparent.webp"
+                src="/images/r69-asset-two-streams-converge-r5n-bright-transparent.webp"
                 alt="Two streams converging into one deposit"
                 width={340}
                 height={340}

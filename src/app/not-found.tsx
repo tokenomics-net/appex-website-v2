@@ -6,7 +6,7 @@
  *
  * Design: uses existing brand token system (no hardcoded hex).
  * Header + footer provided by root layout  --  this renders inside <main>.
- * Asset: r19-asset-redemption-gate-arch-transparent.webp  --  the right visual
+ * Asset: r47-asset-redemption-gate-arch-bright-transparent.webp  --  the right visual
  *   metaphor for "a gate that wasn't meant for this path."
  * Copy: short, on-voice, under 40 words. No em dashes.
  */
@@ -14,11 +14,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
+import { OG_IMAGE } from "@/lib/og";
+import { BASE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title:       "Page not found | appeX Protocol",
+  title:       "Page not found",
   description: "This page does not exist. Head back to appeX Protocol and find what you came for.",
   robots: { index: false, follow: false },
+  openGraph: {
+    title:       "Page not found | appeX Protocol",
+    description: "This page does not exist. Head back to appeX Protocol and find what you came for.",
+    type:        "website",
+    url:         `${BASE_URL}/404`,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card:        "summary_large_image",
+    site:        "@appexprotocol",
+    title:       "Page not found | appeX Protocol",
+    description: "This page does not exist. Head back to appeX Protocol and find what you came for.",
+    images:      [OG_IMAGE.url],
+  },
 };
 
 export default function NotFound(): React.JSX.Element {
@@ -88,7 +104,7 @@ export default function NotFound(): React.JSX.Element {
 
         .notfound__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -114,14 +130,14 @@ export default function NotFound(): React.JSX.Element {
           margin: 0 0 40px;
         }
 
-        /* Primary CTA */
+        /* Primary CTA. Mobile audit: bumped from 13px to 14px minimum. */
         .notfound__cta-primary {
           display: inline-block;
           padding: 12px 28px;
           background: var(--ax-capital-yellow);
           color: var(--ax-fortress);
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.06em;
           text-transform: uppercase;
@@ -190,7 +206,7 @@ export default function NotFound(): React.JSX.Element {
         <div className="notfound__asset-wrap" aria-hidden="true">
           <div className="notfound__code">404</div>
           <Image
-            src="/images/r19-asset-redemption-gate-arch-transparent.webp"
+            src="/images/r47-asset-redemption-gate-arch-bright-transparent.webp"
             alt=""
             width={200}
             height={200}

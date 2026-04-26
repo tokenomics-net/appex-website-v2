@@ -46,7 +46,7 @@ const PROTECTION_CARDS: ProtectionCard[] = [
       "No discretionary fast-lane, no relationship shortcut",
       "Your application responds on quality, not on who you know",
     ],
-    icon:       "/images/r36-asset-single-lane-transparent.webp",
+    icon:       "/images/r90-asset-channel-rail-bright-transparent.webp",
   },
   {
     id:         "customer-relationship",
@@ -57,7 +57,7 @@ const PROTECTION_CARDS: ProtectionCard[] = [
       "Customers are not pulled into vendor-finance diligence",
       "Your customers never learn you financed the receivable",
     ],
-    icon:       "/images/r36-asset-you-focus-transparent.webp",
+    icon:       "/images/r91-asset-plinth-lens-bright-transparent.webp",
   },
   {
     id:         "peer-pool",
@@ -68,7 +68,7 @@ const PROTECTION_CARDS: ProtectionCard[] = [
       "No pay-to-play counterparty drift over time",
       "You stand next to peers who passed the same bar",
     ],
-    icon:       "/images/r36-asset-clear-bar-transparent.webp",
+    icon:       "/images/r63-asset-clear-bar-r5n-bright-transparent.webp",
   },
   {
     id:         "margin",
@@ -79,7 +79,7 @@ const PROTECTION_CARDS: ProtectionCard[] = [
       "Fees fixed during onboarding, not haggled per invoice",
       "The $APPEX discount is written into the facility",
     ],
-    icon:       "/images/r36-asset-written-facility-transparent.webp",
+    icon:       "/images/r92-asset-inscribed-plate-r5n-bright-transparent.webp",
   },
   {
     id:         "facility",
@@ -90,7 +90,7 @@ const PROTECTION_CARDS: ProtectionCard[] = [
       "Fee generation, payment velocity, credit quality compound into priority",
       "Acting like a long-term partner earns matching treatment",
     ],
-    icon:       "/images/r36-asset-priority-stair-transparent.webp",
+    icon:       "/images/r71-asset-priority-stair-bright-transparent.webp",
   },
 ];
 
@@ -248,7 +248,7 @@ export function TrustAndRigor(): React.JSX.Element {
 
         .trust-rigor__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -302,6 +302,8 @@ export function TrustAndRigor(): React.JSX.Element {
           opacity: 0.35;
         }
 
+        /* Mobile audit exception: 13px retained -- drag affordance pill label,
+         * not body content. Uppercase + letter-spacing provides adequate legibility. */
         .trust-rigor__drag-pill-action {
           color: var(--ax-capital-yellow, #FED607);
           text-transform: uppercase;
@@ -322,6 +324,7 @@ export function TrustAndRigor(): React.JSX.Element {
           scrollbar-width: none;
           -webkit-overflow-scrolling: touch;
           margin: 0 -48px;
+          will-change: scroll-position; /* primes compositor before first drag -- eliminates geometry-resolution cost on cold first scroll */
         }
 
         .trust-rigor__track::-webkit-scrollbar { display: none; }
@@ -412,12 +415,13 @@ export function TrustAndRigor(): React.JSX.Element {
           gap: 6px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .trust-rigor__card-bullet {
           display: flex;
           align-items: flex-start;
           gap: 8px;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.45;
           color: var(--text-secondary);
         }
@@ -446,7 +450,7 @@ export function TrustAndRigor(): React.JSX.Element {
         .trust-rigor__how-label,
         .trust-rigor__why-label {
           font-family: var(--font-display-family);
-          font-size: 10px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;

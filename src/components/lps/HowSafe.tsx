@@ -19,9 +19,9 @@
  *
  * Assets (r35 velvet cleanup  --  all r29 retired to library equivalents):
  *   Card 1 Vault isolation:         r19-asset-architecture-core-ziggurat-transparent.webp
- *   Card 2 Borrower remains liable: r19-asset-redemption-gate-arch-transparent.webp
- *   Card 3 Rigorous onboarding:     r19-asset-security-seal-obelisk-transparent.webp
- *   Card 4 No idle USDC:            r19-asset-momentum-wave-transparent.webp
+ *   Card 2 Borrower remains liable: r47-asset-redemption-gate-arch-bright-transparent.webp
+ *   Card 3 Rigorous onboarding:     r46-asset-security-seal-obelisk-bright-transparent.webp
+ *   Card 4 No idle USDC:            r48-asset-momentum-wave-bright-transparent.webp
  *
  * Background stack (upgraded per AD Rev 3):
  *   Layer 0: r17-texture-grounding.png at 20%
@@ -50,7 +50,7 @@ interface SafetyRow {
 const SAFETY_ROWS: SafetyRow[] = [
   {
     id:       "vault-isolation",
-    asset:    "/images/r36-asset-three-vaults-isolation-transparent.webp",
+    asset:    "/images/r51-asset-three-vaults-isolation-r5n-bright-transparent.webp",
     heading:  "Vault isolation.",
     body:     "Each vault is its own smart contract with its own NAV, borrower pool, and fee curve. Losses in one vault do not reach another. LPs pick their exposure by picking their vault.",
     floatDur: "5s",
@@ -58,7 +58,7 @@ const SAFETY_ROWS: SafetyRow[] = [
   },
   {
     id:       "borrower-liable",
-    asset:    "/images/r36-asset-borrower-liability-transparent.webp",
+    asset:    "/images/r88-asset-facility-stamp-r5n-bright-transparent.webp",
     heading:  "Borrower remains liable.",
     body:     "The vault's counterparty is the borrowing company, not their downstream customer. If a customer pays late or fails to pay, the borrower still owes the vault on the original term. Repayment is contractual, not conditional.",
     floatDur: "5.5s",
@@ -66,7 +66,7 @@ const SAFETY_ROWS: SafetyRow[] = [
   },
   {
     id:       "rigorous-onboarding",
-    asset:    "/images/r36-asset-shield-onboarding-transparent.webp",
+    asset:    "/images/r83-asset-shield-onboarding-bright-transparent.webp",
     heading:  "Rigorous onboarding.",
     body:     "Every borrower passes credit evaluation, financial review, and background checks before drawing. Concentration guidelines cap exposure per borrower and per industry. Insurance applies where available. Default permanently removes a borrower from the approved pool.",
     floatDur: "6s",
@@ -74,7 +74,7 @@ const SAFETY_ROWS: SafetyRow[] = [
   },
   {
     id:       "no-idle-usdc",
-    asset:    "/images/r19-asset-momentum-wave-transparent.webp",
+    asset:    "/images/r48-asset-momentum-wave-bright-transparent.webp",
     heading:  "No idle USDC.",
     body:     "Capital outside an active advance sits in Aave earning continuous yield, and redemptions draw from that liquid position first. Idle capital still works, and exit liquidity is backed by it.",
     floatDur: "6.5s",
@@ -82,7 +82,7 @@ const SAFETY_ROWS: SafetyRow[] = [
   },
   {
     id:       "audits-bounty",
-    asset:    "/images/r22-util-governance-transparent.webp",
+    asset:    "/images/r53-asset-util-governance-bright-transparent.webp",
     heading:  "Audits plus bug bounty.",
     body:     "Smart contracts ship after third-party audits, and a standing bug-bounty program invites ongoing review. The security surface is documented, not assumed.",
     floatDur: "6s",
@@ -186,7 +186,7 @@ export function HowSafe(): React.JSX.Element {
 
         .how-safe__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -337,7 +337,7 @@ export function HowSafe(): React.JSX.Element {
 
         {/* Layer 0: r17-texture-grounding at 20% */}
         <Image
-          src="/images/r17-texture-grounding.png"
+          src="/images/r17-texture-grounding.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

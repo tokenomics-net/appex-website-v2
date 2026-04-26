@@ -30,13 +30,13 @@ import { RiskCarousel }         from "@/components/protocol/RiskCarousel";
 import { ProtocolCTA }          from "@/components/protocol/ProtocolCTA";
 
 export const metadata: Metadata = {
-  title:       "How the appeX vault works | Protocol Mechanics",
+  title:       "How the appeX vault works",
   description: "Three steps: LPs deposit USDC, approved borrowers draw, fees accrue to NAV. Origination fees are one-time. No variable rates.",
   alternates: {
     canonical: `${BASE_URL}/protocol`,
   },
   openGraph: {
-    title:       "How the appeX vault works | Protocol Mechanics",
+    title:       "How the appeX vault works | appeX Protocol",
     description: "Three steps: LPs deposit USDC, approved borrowers draw, fees accrue to NAV. Origination fees are one-time. No variable rates.",
     type:        "website",
     url:         `${BASE_URL}/protocol`,
@@ -45,9 +45,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "How the appeX vault works | Protocol Mechanics",
+    title:       "How the appeX vault works | appeX Protocol",
     description: "Three steps: LPs deposit USDC, approved borrowers draw, fees accrue to NAV. Origination fees are one-time. No variable rates.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

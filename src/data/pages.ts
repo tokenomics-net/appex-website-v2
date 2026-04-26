@@ -29,7 +29,7 @@ export interface PageEntry {
  *   0.8   --  category index pages
  *   0.7   --  secondary static pages (about)
  *   0.6   --  sub-pages, blog, location pages, guides
- *   0.3   --  legal / utility pages (privacy, terms, cookies, disclosures)
+ *   0.3   --  legal / utility pages (privacy, terms, disclosures)
  */
 export const corePages: PageEntry[] = [
   { urlPath: "/",            priority: 1.0, changeFrequency: "weekly"  },
@@ -41,5 +41,5 @@ export const corePages: PageEntry[] = [
   { urlPath: "/blog",        priority: 0.8, changeFrequency: "weekly"  },
   { urlPath: "/terms",       priority: 0.3, changeFrequency: "yearly"  },
   { urlPath: "/privacy",     priority: 0.3, changeFrequency: "yearly"  },
-  { urlPath: "/cookies",     priority: 0.3, changeFrequency: "yearly"  },
+  { urlPath: "/disclosures", priority: 0.3, changeFrequency: "yearly"  },
 ];

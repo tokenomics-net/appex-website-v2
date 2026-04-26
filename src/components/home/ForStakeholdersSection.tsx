@@ -9,8 +9,8 @@
  * Replaces: ForLPsSection.tsx + ForBorrowersSection.tsx (both deleted)
  *
  * Layout: interactive tabs, two tabs
- *   Tab 1 "For Liquidity Providers":  r22-asset-lp-yield-transparent.webp + LP copy
- *   Tab 2 "For Borrowers":            r22-asset-borrower-forward-transparent.webp + Borrower copy
+ *   Tab 1 "For Liquidity Providers":  r54-asset-lp-yield-r5n-bright-transparent.webp + LP copy
+ *   Tab 2 "For Borrowers":            r59-asset-borrower-forward-bright-transparent.webp + Borrower copy
  * Tab buttons: same step-nav style as SolutionSection
  * Background: r17-texture-calm.png at 20% (unified for both tabs  --  consistent section feel)
  * Asset size: 280-320px
@@ -41,7 +41,7 @@ const TABS: TabData[] = [
   {
     id: "lps",
     label: "For Liquidity Providers",
-    asset: "/images/r22-asset-lp-yield-transparent.webp",
+    asset: "/images/r54-asset-lp-yield-r5n-bright-transparent.webp",
     assetAlt: "Floating LP yield asset representing fee accrual into NAV",
     accentVar: "var(--ax-capital-yellow)",
     eyebrow: "For Liquidity Providers",
@@ -58,7 +58,7 @@ const TABS: TabData[] = [
   {
     id: "borrowers",
     label: "For Borrowers",
-    asset: "/images/r22-asset-borrower-forward-transparent.webp",
+    asset: "/images/r59-asset-borrower-forward-bright-transparent.webp",
     assetAlt: "Borrower forward asset representing capital access and forward payment",
     accentVar: "var(--ax-ether-mist)",
     eyebrow: "For Borrowers",
@@ -184,9 +184,12 @@ export function ForStakeholdersSection(): React.JSX.Element {
           flex-wrap: wrap;
         }
 
+        /* Mobile audit: bumped from 12px to 14px minimum.
+         * Tab labels ("For Liquidity Providers" / "For Borrowers") are
+         * content-critical navigation decisions, not decorative labels. */
         .stakeholders__tab-btn {
           font-family: var(--font-display-family);
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -272,7 +275,7 @@ export function ForStakeholdersSection(): React.JSX.Element {
         /* Copy column */
         .stakeholders__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -329,7 +332,7 @@ export function ForStakeholdersSection(): React.JSX.Element {
       <section className="stakeholders" aria-labelledby="stakeholders-heading">
         {/* Texture layer  --  r17-texture-calm at 20% */}
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           className="stakeholders__texture"

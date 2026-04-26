@@ -361,7 +361,7 @@ export function getMDXComponents(): MDXComponents {
           borderBottom: "1px solid rgba(90,28,203,0.4)",
           color: "var(--ax-capital-yellow)",
           fontFamily: "var(--font-display-family, system-ui)",
-          fontSize: "12px",
+          fontSize: "14px",
           textTransform: "uppercase",
           letterSpacing: "2px",
           fontWeight: 400,

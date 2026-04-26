@@ -8,11 +8,11 @@
  * Section order (r22 rebuild):
  *   1. Hero              r22-hero-home-v2.webp + r22 token floating right
  *   2. Capital Gap       split-stat on r18-texture-weight (unchanged)
- *   3. Solution          interactive 3-step, Fund step swapped to r22-step-fund-draw
+ *   3. Solution          interactive 3-step, Fund step swapped to r81-asset-step-fund-draw-bright
  *   4. ForStakeholders   NEW: merged LPs + Borrowers as interactive two-tab section
  *                        (ForLPsSection + ForBorrowersSection DELETED)
  *   5. AppLockr          hourglass deleted, "Anchor Borrower" eyebrow, expanded copy,
- *                        r22-step-gap + r22-step-bridge replacing prior images
+ *                        r67-asset-step-gap-bright + r60-asset-step-bridge-bright replacing prior images
  *   6. Token             5 utility cards with r22-util-* images, "About $APPEX" button
  *   7. ClosingCTA        two-column: "Follow the vault" (socials) + "Apply to borrow" (email)
  */
@@ -29,7 +29,7 @@ import { TokenSection }             from "@/components/home/TokenSection";
 import { ClosingCTASection }        from "@/components/home/ClosingCTASection";
 
 export const metadata: Metadata = {
-  title:       "appeX Protocol | Onchain Financing Infrastructure",
+  title:       "Onchain Financing Infrastructure",
   description: "LPs deposit USDC. Approved borrowers draw capital against verified receivables. Fees accrue to NAV per advance. No emissions, no spreads.",
   alternates: {
     canonical: BASE_URL,
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     site:        "@appexprotocol",
     title:       "appeX Protocol | Onchain Financing Infrastructure",
     description: "LPs deposit USDC. Approved borrowers draw capital against verified receivables. Fees accrue to NAV per advance. No emissions, no spreads.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

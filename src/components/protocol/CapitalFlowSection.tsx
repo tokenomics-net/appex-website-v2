@@ -104,7 +104,7 @@ export function CapitalFlowSection(): React.JSX.Element {
 
         .cap-flow__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -195,20 +195,20 @@ export function CapitalFlowSection(): React.JSX.Element {
           margin-bottom: 10px;
         }
 
-        /* Card label */
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .cap-flow__card-label {
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 500;
           color: var(--text-primary);
           margin-bottom: 6px;
           letter-spacing: 0.02em;
         }
 
-        /* Card body */
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .cap-flow__card-body {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.6;
           color: var(--text-secondary);
         }
@@ -217,7 +217,7 @@ export function CapitalFlowSection(): React.JSX.Element {
       <section className="cap-flow" id="capital-flow" aria-labelledby="cap-flow-heading">
         {/* Texture underlay */}
         <Image
-          src="/images/r17-texture-energy.png"
+          src="/images/r17-texture-energy.webp"
           alt="" aria-hidden="true"
           fill
           className="cap-flow__texture"
@@ -241,7 +241,7 @@ export function CapitalFlowSection(): React.JSX.Element {
               <div className="cap-flow__asset-wrap">
                 <div className="cap-flow__asset-glow" aria-hidden="true" />
                 <Image
-                  src="/images/r23-flow-capital.png"
+                  src="/images/r23-flow-capital.webp"
                   alt="Branching capital flow manifold: active and idle capital paths"
                   width={360}
                   height={360}

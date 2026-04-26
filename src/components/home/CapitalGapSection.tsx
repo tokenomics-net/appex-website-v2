@@ -87,15 +87,17 @@ export function CapitalGapSection(): React.JSX.Element {
           .capital-gap__content { padding: 40px 24px; }
         }
 
-        /* Eyebrow above the stat row */
+        /* Eyebrow above the stat row.
+         * Mobile audit: opacity bumped from 0.55 to 0.80 -- 14px at 55% opacity
+         * reads as ~9px effective visual contrast on small screens. */
         .capital-gap__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
           color: var(--ax-capital-yellow);
-          opacity: 0.55;
+          opacity: 0.80;
           margin-bottom: 24px;
           text-align: center;
         }
@@ -156,15 +158,16 @@ export function CapitalGapSection(): React.JSX.Element {
         }
 
         .capital-gap__stat-label {
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.45;
           color: var(--text-secondary);
           max-width: 180px;
         }
 
-        /* Source attribution  --  small, de-emphasized, for AI citability (GEO audit) */
+        /* Source attribution  --  de-emphasized, for AI citability (GEO audit).
+         * Mobile audit: bumped from 10px to 14px minimum floor. */
         .capital-gap__stat-source {
-          font-size: 10px;
+          font-size: 14px;
           line-height: 1.4;
           color: var(--ax-text-tertiary);
           opacity: 0.65;
@@ -196,7 +199,7 @@ export function CapitalGapSection(): React.JSX.Element {
 
       <section className="capital-gap" aria-labelledby="capital-gap-heading">
         <Image
-          src="/images/r18-texture-weight.png"
+          src="/images/r18-texture-weight.webp"
           alt="" aria-hidden="true"
           fill
           className="capital-gap__texture"

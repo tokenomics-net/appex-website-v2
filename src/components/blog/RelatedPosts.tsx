@@ -81,7 +81,7 @@ export function RelatedPosts({ posts, category }: RelatedPostsProps): React.JSX.
 
         .related__eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;
@@ -168,7 +168,7 @@ export function RelatedPosts({ posts, category }: RelatedPostsProps): React.JSX.
           top: 12px;
           left: 12px;
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 2px;
           padding: 4px 10px;
@@ -216,9 +216,10 @@ export function RelatedPosts({ posts, category }: RelatedPostsProps): React.JSX.
           flex: 1;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .related-card__meta-text {
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           letter-spacing: 0.02em;
           margin-top: auto;
@@ -227,7 +228,7 @@ export function RelatedPosts({ posts, category }: RelatedPostsProps): React.JSX.
 
       <section id="related" className="related">
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           className="related__texture"

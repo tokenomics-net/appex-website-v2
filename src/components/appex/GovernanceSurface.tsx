@@ -12,7 +12,7 @@
  *   Glass spec (heavier, on-scene): backdrop-filter blur(22px)
  *   Eyebrow uses ether-mist accent #B9A0CC per spec (distinct from yellow-dominant sections)
  *   Hairlines use ether-mist tint rgba(185,160,204,0.16) per spec
- * Right column (45%): r19-asset-governance-quorum-ring-transparent.webp
+ * Right column (45%): r45-asset-governance-quorum-ring-bright-transparent.webp
  *   Animation: translateY 8px / 6s + rock 1deg / 9s (Tony-approved)
  *   Drop-shadow pulse 7s
  * Copy: appex.md Section 7. Present tense. No em dashes.
@@ -126,7 +126,7 @@ export function GovernanceSurface(): React.JSX.Element {
         /* Eyebrow uses ether-mist accent per spec */
         .governance__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -175,7 +175,9 @@ export function GovernanceSurface(): React.JSX.Element {
           counter-increment: scope-counter;
         }
 
-        /* Gradient pill number markers */
+        /* Gradient pill number markers.
+         * Mobile audit exception: 12px retained -- number inside a 26x26 circular
+         * gradient badge. Not body content; a UI ordinal marker chip. */
         .governance__scope-num {
           flex-shrink: 0;
           width: 26px;
@@ -257,7 +259,7 @@ export function GovernanceSurface(): React.JSX.Element {
 
         {/* Scene */}
         <Image
-          src="/images/r24-scene-governance-floor.png"
+          src="/images/r24-scene-governance-floor.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
@@ -269,13 +271,14 @@ export function GovernanceSurface(): React.JSX.Element {
 
         {/* r17-texture-grounding at 8% subliminal underlayer */}
         <Image
-          src="/images/r17-texture-grounding.png"
+          src="/images/r17-texture-grounding.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
           quality={50}
           className="governance__grounding"
           style={{ objectFit: "cover" }}
+          loading="lazy"
         />
 
         <div className="governance__overlay"         aria-hidden="true" />
@@ -323,7 +326,7 @@ export function GovernanceSurface(): React.JSX.Element {
             <div className="governance__right">
               <div className="governance__halo" aria-hidden="true" />
               <Image
-                src="/images/r19-asset-governance-quorum-ring-transparent.webp"
+                src="/images/r45-asset-governance-quorum-ring-bright-transparent.webp"
                 alt="Quorum ring  --  the central symbol of the governance voting floor"
                 width={460}
                 height={460}

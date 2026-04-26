@@ -26,13 +26,13 @@ import { Governance }    from "@/components/about/Governance";
 import { AuditsContact } from "@/components/about/AuditsContact";
 
 export const metadata: Metadata = {
-  title:       "About appeX | A protocol, not a company",
+  title:       "A protocol, not a company",
   description: "appeX is a decentralized protocol for onchain working capital. Read the mission, the architecture, the governance pathway, and the security posture.",
   alternates: {
     canonical: `${BASE_URL}/about`,
   },
   openGraph: {
-    title:       "About appeX | A protocol, not a company",
+    title:       "A protocol, not a company | appeX Protocol",
     description: "appeX is a decentralized protocol for onchain working capital. Read the mission, the architecture, the governance pathway, and the security posture.",
     type:        "website",
     url:         `${BASE_URL}/about`,
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "About appeX | A protocol, not a company",
+    title:       "A protocol, not a company | appeX Protocol",
     description: "appeX is a decentralized protocol for onchain working capital. Read the mission, the architecture, the governance pathway, and the security posture.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

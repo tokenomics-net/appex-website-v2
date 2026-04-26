@@ -65,7 +65,7 @@ export function AuditsContact(): React.JSX.Element {
 
         .about-security__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;

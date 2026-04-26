@@ -92,7 +92,7 @@ export function StakingMechanics(): React.JSX.Element {
 
         .staking__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -254,7 +254,7 @@ export function StakingMechanics(): React.JSX.Element {
         /* Module sub-heading */
         .staking__module-label {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -329,6 +329,8 @@ export function StakingMechanics(): React.JSX.Element {
           overflow-x: auto;
         }
 
+        /* Mobile audit exception: 12px retained -- italic caveat annotation
+         * below the staking cap data block, not body content. */
         .staking__cap-caveat {
           font-family: var(--font-body-family);
           font-size: 12px;
@@ -355,6 +357,8 @@ export function StakingMechanics(): React.JSX.Element {
           white-space: nowrap;
         }
 
+        /* Mobile audit exception: 11px retained -- uppercase small-caps table column
+         * header. Equivalent to SVG axis label; not readable prose content. */
         .staking__table th {
           font-family: var(--font-display-family);
           font-size: 11px;
@@ -427,9 +431,10 @@ export function StakingMechanics(): React.JSX.Element {
           color: var(--text-primary);
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .staking__cadence {
           display: block;
-          font-size: 13px;
+          font-size: 14px;
           font-style: italic;
           color: var(--text-secondary);
           margin-top: 8px;
@@ -475,7 +480,7 @@ export function StakingMechanics(): React.JSX.Element {
             {/* Left column: floating asset + pull-stat */}
             <div className="staking__left">
               <Image
-                src="/images/r36-asset-3x-multiplier-transparent.webp"
+                src="/images/r64-asset-3x-multiplier-r5n-bright-transparent.webp"
                 alt="3x multiplier form  --  reward weight scales with lock duration"
                 width={380}
                 height={380}
@@ -494,13 +499,14 @@ export function StakingMechanics(): React.JSX.Element {
             <div className="staking__panel">
               {/* Inner rhythm texture at 10% */}
               <Image
-                src="/images/r17-texture-rhythm.png"
+                src="/images/r17-texture-rhythm.webp"
                 alt="" aria-hidden="true"
                 fill
                 sizes="50vw"
                 quality={50}
                 className="staking__panel-texture"
                 style={{ objectFit: "cover" }}
+                loading="lazy"
               />
 
               {/* Module A: Requirements */}

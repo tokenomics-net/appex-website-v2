@@ -292,7 +292,7 @@ export function VestingTimeline(): React.JSX.Element {
 
         .vesting__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -321,7 +321,9 @@ export function VestingTimeline(): React.JSX.Element {
 
         /* SVG wrapper  --  overflow FIX:
          * overflow: visible on desktop prevents sub-pixel scrollbar artifact.
-         * overflow-x: auto only on mobile where min-width scroll is needed. */
+         * overflow-x: auto only on mobile where min-width scroll is needed.
+         * Mobile audit: ::after pseudo-element adds right-edge fade-gradient
+         * scroll affordance so iOS users can tell the chart scrolls. */
         .vesting__svg-wrap {
           position: relative;
           width: 100%;
@@ -334,6 +336,22 @@ export function VestingTimeline(): React.JSX.Element {
         @media (max-width: 767px) {
           .vesting__svg-wrap {
             overflow-x: auto;
+          }
+
+          /* Right-edge fade -- signals horizontal scroll affordance */
+          .vesting__svg-wrap::after {
+            content: '';
+            position: sticky;
+            right: 0;
+            top: 0;
+            display: block;
+            width: 48px;
+            height: 100%;
+            margin-left: auto;
+            margin-top: -100%;
+            pointer-events: none;
+            background: linear-gradient(90deg, transparent 0%, var(--ax-fortress, #0A0F1F) 100%);
+            flex-shrink: 0;
           }
         }
 
@@ -384,12 +402,13 @@ export function VestingTimeline(): React.JSX.Element {
           list-style: none;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .vesting__legend-item {
           display: flex;
           align-items: center;
           gap: 8px;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: rgba(255,255,255,0.85);
         }
 
@@ -440,7 +459,7 @@ export function VestingTimeline(): React.JSX.Element {
       <section className="vesting" id="vesting" aria-labelledby="vesting-heading">
 
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

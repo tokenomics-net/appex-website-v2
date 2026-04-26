@@ -9,8 +9,8 @@
  * Three tiles: LPs / Borrowers / Protocol
  * Tile anatomy: image zone 280px tall (top) + text zone below, min-height 480px
  * Assets (hero-scale, 220px, matching destination page heroes):
- *   Card 1 (LPs)       -> r22-asset-lp-yield-transparent.webp
- *   Card 2 (Borrowers) -> r22-asset-borrower-forward-transparent.webp
+ *   Card 1 (LPs)       -> r54-asset-lp-yield-r5n-bright-transparent.webp
+ *   Card 2 (Borrowers) -> r59-asset-borrower-forward-bright-transparent.webp
  *   Card 3 (Protocol)  -> r19-asset-architecture-core-ziggurat-transparent.webp
  * Float animation: 8s ease-in-out, staggered 0s / 0.5s / 1.0s
  * Hover: translateY(-4px) + shadow deepen + border brighten
@@ -34,7 +34,7 @@ interface CrossCard {
 const CARDS: CrossCard[] = [
   {
     id:       "lps",
-    asset:    "/images/r22-asset-lp-yield-transparent.webp",
+    asset:    "/images/r54-asset-lp-yield-r5n-bright-transparent.webp",
     assetAlt: "LP yield dimensional form representing committed capital earning real yield",
     headline: "For LPs.",
     blurb:    "Yield on committed capital, paid from real borrower fees, redeemable on the terms you set.",
@@ -42,7 +42,7 @@ const CARDS: CrossCard[] = [
   },
   {
     id:       "borrowers",
-    asset:    "/images/r22-asset-borrower-forward-transparent.webp",
+    asset:    "/images/r59-asset-borrower-forward-bright-transparent.webp",
     assetAlt: "Borrower forward-motion form representing draw against verified revenue",
     headline: "For Borrowers.",
     blurb:    "Draw against verified revenue. Pay protocol fees in $APPEX for a 25% discount.",
@@ -50,7 +50,7 @@ const CARDS: CrossCard[] = [
   },
   {
     id:       "protocol",
-    asset:    "/images/r36-asset-protocol-core-transparent.webp",
+    asset:    "/images/r75-asset-protocol-core-bright-transparent.webp",
     assetAlt: "The protocol core  --  connected to every surface of the protocol",
     headline: "Protocol.",
     blurb:    "Read the vault mechanism end to end: deposit, fund, earn, redeem.",
@@ -127,7 +127,7 @@ export function EcosystemCrosslinks(): React.JSX.Element {
 
         .ecosystem__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -302,7 +302,7 @@ export function EcosystemCrosslinks(): React.JSX.Element {
 
         {/* r17-texture-energy at 20% */}
         <Image
-          src="/images/r17-texture-energy.png"
+          src="/images/r17-texture-energy.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

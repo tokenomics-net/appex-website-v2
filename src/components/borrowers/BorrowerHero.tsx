@@ -174,7 +174,7 @@ export function BorrowerHero(): React.JSX.Element {
         /* Eyebrow */
         .bor-hero__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -374,6 +374,7 @@ export function BorrowerHero(): React.JSX.Element {
         @media (max-width: 767px) {
           .bor-hero__ingot {
             position: relative;
+            z-index: 0; /* below heading grid (z-index: 4) -- prevents floater overlapping heading text */
             right: auto;
             top: auto;
             width: clamp(200px, 58vw, 260px);
@@ -424,7 +425,7 @@ export function BorrowerHero(): React.JSX.Element {
 
         {/* Layer 1: horizon texture underlayer at 8% */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
@@ -440,7 +441,7 @@ export function BorrowerHero(): React.JSX.Element {
 
         {/* Floating borrower facility monolith  --  mobile renders inline above copy */}
         <Image
-          src="/images/r39-asset-borrower-hero-floater-transparent.webp"
+          src="/images/r42-asset-borrower-hero-floater-bright-transparent.webp"
           alt="capital facility archway gate"
           role="presentation"
           width={460}

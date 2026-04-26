@@ -8,7 +8,7 @@
  * Background: NO texture  --  deliberate breather between the two data-viz sections
  *   and the governance scene. Plain rgba(10,15,31,0.95) + subtle radial.
  * Left: eyebrow + H2 + body + inline link to /protocol#fee-curve
- * Right: r22-util-liquidity-transparent.webp at 0.65 opacity (liquidity utility asset  --  market-buy semantic)
+ * Right: r82-asset-util-liquidity-bright-transparent.webp at 0.65 opacity (liquidity utility asset  --  market-buy semantic)
  * No interaction beyond inline-link hover.
  * Copy: appex.md Section 6. Present tense. No em dashes.
  */
@@ -89,7 +89,7 @@ export function FeeFlowRecall(): React.JSX.Element {
         /* Copy cluster */
         .fee-flow__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -188,7 +188,7 @@ export function FeeFlowRecall(): React.JSX.Element {
 
             {/* Ghost thumbnail (decorative) */}
             <Image
-              src="/images/r22-step-fund-draw-transparent.webp"
+              src="/images/r81-asset-step-fund-draw-bright-transparent.webp"
               alt="Fee split  --  half to treasury, half to stakers"
               role="presentation"
               width={380}

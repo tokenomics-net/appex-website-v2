@@ -208,14 +208,16 @@ export function FeeCurveSection(): React.JSX.Element {
           margin-bottom: 48px;
         }
 
+        /* Mobile audit: opacity bumped from 0.55 to 0.80 -- 14px at 55% reads as
+         * ~9px effective visual contrast on small screens. */
         .fee-curve__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
           color: var(--ax-capital-yellow);
-          opacity: 0.55;
+          opacity: 0.80;
           margin-bottom: 14px;
         }
 
@@ -299,6 +301,12 @@ export function FeeCurveSection(): React.JSX.Element {
           .fee-curve__cards { grid-template-columns: repeat(2, 1fr); }
         }
 
+        /* Mobile audit: explicit 1-col at iPhone SE width (<400px).
+         * 2-up at 375px is too cramped on the SE breakpoint. */
+        @media (max-width: 399px) {
+          .fee-curve__cards { grid-template-columns: 1fr; }
+        }
+
         /* Glass card */
         .fee-card {
           position: relative;
@@ -323,7 +331,7 @@ export function FeeCurveSection(): React.JSX.Element {
           content: "";
           position: absolute;
           inset: 0;
-          background-image: url("/images/r18-texture-weight.png");
+          background-image: url("/images/r18-texture-weight.webp");
           background-size: cover;
           background-position: center;
           opacity: 0.08;
@@ -365,9 +373,10 @@ export function FeeCurveSection(): React.JSX.Element {
           outline-offset: 3px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .fee-card__term {
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 500;
           transition: color 300ms;
           margin-bottom: 8px;
@@ -385,9 +394,10 @@ export function FeeCurveSection(): React.JSX.Element {
         .fee-card__rate--active   { color: var(--ax-capital-yellow); }
         .fee-card__rate--inactive { color: var(--text-primary); }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .fee-card__desc {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-secondary);
           margin-bottom: 10px;
         }
@@ -428,13 +438,16 @@ export function FeeCurveSection(): React.JSX.Element {
           margin-bottom: 12px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .fee-curve__callout-sub {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--text-tertiary);
           font-style: italic;
         }
 
+        /* Mobile audit exception: 12px retained -- italic legal disclaimer below
+         * the curve chart, equivalent to an SVG footnote annotation. Not content. */
         .fee-curve__disclaimer {
           font-family: var(--font-body-family);
           font-size: 12px;

@@ -39,35 +39,35 @@ interface RiskSlide {
 const RISK_SLIDES: RiskSlide[] = [
   {
     id:       "vault-isolated",
-    asset:    "/images/r23-card-isolated.png",
+    asset:    "/images/r51-asset-three-vaults-isolation-r5n-bright-transparent.webp",
     assetAlt: "Three separated vault chamber forms showing physical isolation",
     heading:  "Vaults are isolated.",
     body:     "Losses in one vault do not affect others. Borrower relationship is with the vault, not downstream customers. LP complexity is minimized to a single decision: deposit and earn.",
   },
   {
     id:       "borrower-risk",
-    asset:    "/images/r23-card-risk-transfer.png",
+    asset:    "/images/r23-card-risk-transfer.webp",
     assetAlt: "Scale and balance form showing risk transfer to the borrower",
     heading:  "Borrowers carry the risk.",
     body:     "The borrower repays even if their own customer fails to pay. That is the risk transfer that protects LPs. The vault never chases downstream counterparties.",
   },
   {
     id:       "capital-recycles",
-    asset:    "/images/r23-card-capital-cycle.png",
+    asset:    "/images/r23-card-capital-cycle.webp",
     assetAlt: "Torus loop form showing circular capital flow",
     heading:  "Capital recycles.",
     body:     "At 90-day average payment terms, capital turns approximately 4 times per year. Higher utilization means compounding returns without requiring new deposits.",
   },
   {
     id:       "transparent-design",
-    asset:    "/images/r23-card-transparent.webp",
+    asset:    "/images/r66-asset-card-bright-transparent.webp",
     assetAlt: "Open vault form with visible internals representing on-chain transparency",
     heading:  "Transparent by design.",
     body:     "Every vault operates independently with its own liquidity pool, fee structure, and market. The protocol does not take custody of user funds beyond the vault contract.",
   },
   {
     id:       "permissionless",
-    asset:    "/images/r19-asset-security-seal-obelisk-transparent.webp",
+    asset:    "/images/r46-asset-security-seal-obelisk-bright-transparent.webp",
     assetAlt: "Security seal obelisk form representing contract-level permissionless access",
     heading:  "Permissionless at the contract level.",
     body:     "Borrower onboarding follows the published risk framework. The vault does not take custody beyond the contract.",
@@ -247,7 +247,7 @@ export function RiskCarousel(): React.JSX.Element {
 
         .risk-slideshow__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -354,6 +354,7 @@ export function RiskCarousel(): React.JSX.Element {
           grid-template-columns: 380px 1fr;
           min-height: 380px;
           position: relative;
+          will-change: transform, opacity; /* primes compositor for enter/exit slide animations -- eliminates first-transition layout recalculation */
         }
 
         @media (max-width: 1023px) {
@@ -474,7 +475,7 @@ export function RiskCarousel(): React.JSX.Element {
 
         .risk-slideshow__slide-count {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           color: var(--ax-capital-yellow);

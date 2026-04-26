@@ -44,7 +44,7 @@ export async function GET(): Promise<Response> {
       <guid isPermaLink="true">${postUrl}</guid>
       <category>${escapeXml(frontmatter.category)}</category>
       <author>${escapeXml(frontmatter.author)}</author>
-      <enclosure url="${absoluteImage}" type="image/png" length="0" />
+      <enclosure url="${absoluteImage}" type="${absoluteImage.endsWith(".webp") ? "image/webp" : absoluteImage.endsWith(".jpg") || absoluteImage.endsWith(".jpeg") ? "image/jpeg" : "image/png"}" length="0" />
     </item>`;
     })
     .join("\n");

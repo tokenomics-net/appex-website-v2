@@ -171,7 +171,7 @@ export function TokenHero(): React.JSX.Element {
         /* Eyebrow */
         .token-hero__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -426,7 +426,7 @@ export function TokenHero(): React.JSX.Element {
 
         {/* Layer 0: scene image  --  r23-scene-token-utility (token utility scene) */}
         <Image
-          src="/images/r23-scene-token-utility.png"
+          src="/images/r23-scene-token-utility.webp"
           alt="" aria-hidden="true"
           role="presentation"
           fill
@@ -439,7 +439,7 @@ export function TokenHero(): React.JSX.Element {
 
         {/* Layer 4: r18-texture-horizon at 8% subliminal underlayer */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
@@ -455,7 +455,7 @@ export function TokenHero(): React.JSX.Element {
 
         {/* Floating token  --  mobile renders inline above copy */}
         <Image
-          src="/images/r22-appex-token-edited-transparent.webp"
+          src="/images/r22-appex-token-bright-transparent.webp"
           alt="" aria-hidden="true"
           role="presentation"
           width={520}

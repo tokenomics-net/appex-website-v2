@@ -14,6 +14,7 @@
  */
 
 import { useEffect, useState, useRef, useCallback } from "react";
+import Link from "next/link";
 import { MobileNavDrawer } from "./MobileNavDrawer";
 import type { NavConfig } from "./nav-config";
 
@@ -110,15 +111,27 @@ export function SiteHeaderClient({ config }: SiteHeaderClientProps) {
 
 // Internal nav link  --  uses .header-nav-link class defined in globals.css.
 // No per-instance <style> tag: that pattern created 7 duplicate style elements.
+//
+// next/link is used for internal routes so Next.js App Router can prefetch the
+// RSC payload on hover/focus, enabling instant client-side navigation and
+// allowing the browser to discover + fetch hero images sooner after click.
+// External links fall back to a plain <a> (next/link does not handle external hrefs).
 function NavLinkItem({ href, label, external }: { href: string; label: string; external?: boolean }) {
+  if (external) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="header-nav-link"
+      >
+        {label}
+      </a>
+    );
+  }
   return (
-    <a
-      href={href}
-      target={external ? "_blank" : undefined}
-      rel={external ? "noopener noreferrer" : undefined}
-      className="header-nav-link"
-    >
+    <Link href={href} className="header-nav-link">
       {label}
-    </a>
+    </Link>
   );
 }

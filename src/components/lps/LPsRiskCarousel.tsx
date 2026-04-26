@@ -109,6 +109,8 @@ export function LPsRiskCarousel(): React.JSX.Element {
   const isDragging                = useRef<boolean>(false);
   const dragStartX                = useRef<number>(0);
   const scrollStart               = useRef<number>(0);
+  // Stable ref so keyboard handler registered once ([] deps) always sees current dot
+  const activeDotRef              = useRef<number>(0);
 
   // IntersectionObserver drives dot state and pill counter
   useEffect((): (() => void) => {
@@ -134,26 +136,30 @@ export function LPsRiskCarousel(): React.JSX.Element {
     return (): void => observer.disconnect();
   }, []);
 
-  // Keyboard navigation: left/right arrows advance one card
-  useEffect((): (() => void) => {
-    const onKey = (e: KeyboardEvent): void => {
-      if (e.key === "ArrowLeft") {
-        scrollToCard(Math.max(activeDot - 1, 0));
-      } else if (e.key === "ArrowRight") {
-        scrollToCard(Math.min(activeDot + 1, RISK_CARDS.length - 1));
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return (): void => window.removeEventListener("keydown", onKey);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeDot]);
-
   const scrollToCard = useCallback((idx: number): void => {
     const card = cardRefs.current[idx];
     if (card) {
       card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
   }, []);
+
+  // Keep ref in sync so keyboard handler always reads current dot without re-registering
+  useEffect((): void => { activeDotRef.current = activeDot; }, [activeDot]);
+
+  // Keyboard navigation -- registered once ([] deps) via stable ref to avoid
+  // teardown/re-registration on every dot change (eliminates first-keypress lag)
+  useEffect((): (() => void) => {
+    const onKey = (e: KeyboardEvent): void => {
+      if (e.key === "ArrowLeft") {
+        scrollToCard(Math.max(activeDotRef.current - 1, 0));
+      } else if (e.key === "ArrowRight") {
+        scrollToCard(Math.min(activeDotRef.current + 1, RISK_CARDS.length - 1));
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return (): void => window.removeEventListener("keydown", onKey);
+  // scrollToCard is stable (useCallback with [] deps) -- safe to include
+  }, [scrollToCard]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent): void => {
     const track = trackRef.current;
@@ -249,7 +255,7 @@ export function LPsRiskCarousel(): React.JSX.Element {
 
         .lps-risk__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -290,6 +296,8 @@ export function LPsRiskCarousel(): React.JSX.Element {
           .lps-risk__pill-row { justify-content: flex-start; }
         }
 
+        /* Mobile audit exception: 11px retained -- scroll-hint pill indicator,
+         * not body content. Uppercase + letter-spacing provides adequate legibility. */
         .lps-risk__pill {
           display: inline-flex;
           align-items: center;
@@ -358,6 +366,7 @@ export function LPsRiskCarousel(): React.JSX.Element {
           -webkit-overflow-scrolling: touch;
           margin-left: -48px;
           margin-right: -48px;
+          will-change: scroll-position; /* primes compositor before first drag -- eliminates geometry-resolution cost on cold first scroll */
         }
 
         .lps-risk__track::-webkit-scrollbar { display: none; }
@@ -399,7 +408,9 @@ export function LPsRiskCarousel(): React.JSX.Element {
         @media (max-width: 1023px) { .lps-risk__card { flex: 0 0 300px; } }
         @media (max-width: 767px)  { .lps-risk__card { flex: 0 0 280px; } }
 
-        /* Severity pill  --  top-right absolute */
+        /* Severity pill  --  top-right absolute.
+         * Mobile audit exception: 11px retained -- UI severity badge chip,
+         * not body content. Uppercase + color-coded background is the signal. */
         .lps-risk__severity {
           position: absolute;
           top: 20px;
@@ -428,7 +439,7 @@ export function LPsRiskCarousel(): React.JSX.Element {
         /* Block labels */
         .lps-risk__block-label {
           font-family: var(--font-display-family);
-          font-size: 10px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -466,6 +477,8 @@ export function LPsRiskCarousel(): React.JSX.Element {
           padding-top: 20px;
         }
 
+        /* Mobile audit exception: 12px retained -- italic source attribution pill
+         * at 70% opacity below risk cards. Analogous to chart footnote annotation. */
         .lps-risk__source-pill {
           background: rgba(10,15,31,0.55);
           border: 1px solid rgba(90,28,203,0.15);

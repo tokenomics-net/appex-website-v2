@@ -42,7 +42,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .map((page) => ({
       url: `${BASE_URL}${page.urlPath}`,
       lastModified:
-        ["/terms", "/privacy", "/cookies"].includes(page.urlPath) ? STATIC_PAGE_DATE : TODAY,
+        ["/terms", "/privacy", "/disclosures"].includes(page.urlPath) ? STATIC_PAGE_DATE : TODAY,
       changeFrequency: page.changeFrequency,
       priority: page.priority,
     }));

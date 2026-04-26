@@ -11,15 +11,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { Post } from "@/lib/blog/posts";
+import { formatDateLong } from "@/lib/formatters";
 import type React from "react";
 
 interface FeaturedPostProps {
   post: Post;
-}
-
-function formatDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toISOString().split("T")[0]; // YYYY-MM-DD per copy spec
 }
 
 function categoryLabel(cat: string): string {
@@ -85,7 +81,7 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
 
         .featured-eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;
@@ -181,7 +177,7 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
           display: inline-flex;
           align-items: center;
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 2px;
           padding: 4px 10px;
@@ -193,7 +189,7 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
 
         .featured-card__eyebrow-label {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           text-transform: uppercase;
           letter-spacing: 3px;
           color: var(--ax-capital-yellow, #FED607);
@@ -221,20 +217,22 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
           margin: 0;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .featured-card__meta {
           font-family: var(--font-body-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary, rgba(185,160,204,0.50));
           letter-spacing: 0.02em;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .featured-card__cta {
           display: inline-flex;
           align-items: center;
           margin-top: 8px;
           align-self: flex-end;
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -255,7 +253,7 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
       <section id="featured" className="featured-section">
         {/* Texture */}
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           className="featured-section__texture"
@@ -295,7 +293,7 @@ export function FeaturedPost({ post }: FeaturedPostProps): React.JSX.Element {
               <dl>
                 <dt className="sr-only">Meta</dt>
                 <dd className="featured-card__meta">
-                  {frontmatter.author} · {formatDate(frontmatter.date)} · {frontmatter.readTime} min read
+                  {frontmatter.author} · {formatDateLong(frontmatter.date)} · {frontmatter.readTime} min read
                 </dd>
               </dl>
 

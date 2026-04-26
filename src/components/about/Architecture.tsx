@@ -120,7 +120,7 @@ export function Architecture(): React.JSX.Element {
         /* Section header */
         .about-arch__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -174,7 +174,9 @@ export function Architecture(): React.JSX.Element {
           padding-bottom: 0;
         }
 
-        /* Step number */
+        /* Step number.
+         * Mobile audit exception: 13px retained -- UI ordinal indicator,
+         * not body content. Consistent with step-chip pattern across the site. */
         .about-arch__step-num {
           font-family: var(--font-display-family);
           font-size: 13px;
@@ -235,7 +237,7 @@ export function Architecture(): React.JSX.Element {
 
         {/* Layer 0: r17-texture-rhythm at 18% */}
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

@@ -18,8 +18,8 @@
  *   Layer 2: ambient purple wash (top-left)
  *
  * Icon assets:
- *   Tenet 1 (Real fees): r19-asset-yield-curve-wedge-transparent.webp
- *   Tenet 2 (Underwriting): r19-asset-governance-quorum-ring-transparent.webp
+ *   Tenet 1 (Real fees): r44-asset-yield-curve-wedge-bright-transparent.webp
+ *   Tenet 2 (Underwriting): r45-asset-governance-quorum-ring-bright-transparent.webp
  *   Tenet 3 (Protocol-owned liquidity): r19-asset-architecture-core-ziggurat-transparent.webp
  */
 
@@ -41,7 +41,7 @@ interface Tenet {
 const TENETS: Tenet[] = [
   {
     id:       "real-fees",
-    asset:    "/images/r36-asset-real-fees-transparent.webp",
+    asset:    "/images/r87-asset-real-fees-ledger-bright-transparent.webp",
     assetAlt: "Real fees form  --  yield sourced from borrower activity",
     heading:  "Real fees over emissions.",
     lead:     "LP yield is sourced from borrower fees on real advances, paid in the same asset LPs deposit.",
@@ -56,7 +56,7 @@ const TENETS: Tenet[] = [
   },
   {
     id:       "structured-underwriting",
-    asset:    "/images/r36-asset-structured-rigor-transparent.webp",
+    asset:    "/images/r85-asset-structured-rigor-bright-transparent.webp",
     assetAlt: "Structured rigor form  --  underwriting before every facility",
     heading:  "Structured underwriting over rate.",
     lead:     "Every borrower passes financial review, background checks, receivables verification, and concentration limits before a facility opens.",
@@ -71,7 +71,7 @@ const TENETS: Tenet[] = [
   },
   {
     id:       "protocol-owned-liquidity",
-    asset:    "/images/r36-asset-protocol-liquidity-transparent.webp",
+    asset:    "/images/r84-asset-protocol-liquidity-bright-transparent.webp",
     assetAlt: "Protocol liquidity form  --  capital that stays because it earns",
     heading:  "Protocol-owned liquidity over rented TVL.",
     lead:     "Liquidity stays put because it is earning real yield from real borrower activity.",
@@ -156,7 +156,7 @@ export function Mission(): React.JSX.Element {
 
         .about-mission__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -335,7 +335,7 @@ export function Mission(): React.JSX.Element {
 
         {/* Layer 0: r17-texture-grounding at 20% */}
         <Image
-          src="/images/r17-texture-grounding.png"
+          src="/images/r17-texture-grounding.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"

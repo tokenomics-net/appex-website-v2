@@ -162,7 +162,7 @@ export function ClosingCTASection(): React.JSX.Element {
           color: rgba(255,255,255,0.72);
           text-decoration: none;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px; /* mobile audit: bumped from 13px */
           font-weight: 500;
           letter-spacing: 0.02em;
           transition:
@@ -202,7 +202,7 @@ export function ClosingCTASection(): React.JSX.Element {
       <section className="closing-cta" aria-labelledby="closing-cta-lp-heading">
         {/* Texture underlay */}
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           className="closing-cta__texture"

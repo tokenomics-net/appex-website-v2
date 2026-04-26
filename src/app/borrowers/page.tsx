@@ -32,13 +32,13 @@ import { FeeTransparency }    from "@/components/borrowers/FeeTransparency";
 import { BorrowerClosingCTA } from "@/components/borrowers/BorrowerClosingCTA";
 
 export const metadata: Metadata = {
-  title:       "Draw working capital onchain | appeX Borrowers",
+  title:       "Draw working capital onchain",
   description: "Credit-reviewed borrowers draw USDC against verified receivables. Fees negotiated once. No ongoing covenants. No rate surprises.",
   alternates: {
     canonical: `${BASE_URL}/borrowers`,
   },
   openGraph: {
-    title:       "Draw working capital onchain | appeX Borrowers",
+    title:       "Draw working capital onchain | appeX Protocol",
     description: "Credit-reviewed borrowers draw USDC against verified receivables. Fees negotiated once. No ongoing covenants. No rate surprises.",
     type:        "website",
     url:         `${BASE_URL}/borrowers`,
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "Draw working capital onchain | appeX Borrowers",
+    title:       "Draw working capital onchain | appeX Protocol",
     description: "Credit-reviewed borrowers draw USDC against verified receivables. Fees negotiated once. No ongoing covenants. No rate surprises.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

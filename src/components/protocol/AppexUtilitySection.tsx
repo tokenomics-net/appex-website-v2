@@ -11,8 +11,8 @@
  * Processing chamber with bilateral purple/yellow lighting  --  distinct from adjacent fee-curve scene
  * Floating token accent: r22-appex-token-edited-transparent.webp (translateY ONLY, no rotation)
  * 3 utility cards in a row desktop, stacked mobile:
- *   1. Payment demand    --  r22-util-liquidity-transparent.webp
- *   2. Protocol fees     --  r22-util-lower-fees-transparent.webp
+ *   1. Payment demand    --  r82-asset-util-liquidity-bright-transparent.webp
+ *   2. Protocol fees     --  r62-asset-util-lower-fees-bright-transparent.webp
  *   3. Staking           --  r22-util-staking-transparent.webp
  * Copy: protocol.md Section 5b. PRESENT TENSE. No em dashes.
  */
@@ -28,19 +28,19 @@ interface UtilCard {
 
 const UTIL_CARDS: UtilCard[] = [
   {
-    icon:    "/images/r22-util-liquidity-transparent.webp",
+    icon:    "/images/r82-asset-util-liquidity-bright-transparent.webp",
     iconAlt: "Liquidity utility  --  structural buying pressure from real transactions",
     title:   "Payment demand",
     body:    "When users request payment in $APPEX, the vault purchases it on the open market. Real transactions create structural buying pressure.",
   },
   {
-    icon:    "/images/r22-util-lower-fees-transparent.webp",
+    icon:    "/images/r62-asset-util-lower-fees-bright-transparent.webp",
     iconAlt: "Lower fees utility  --  25% discount on protocol fees paid in $APPEX",
     title:   "Protocol fees",
     body:    "Borrowers who pay protocol fees in $APPEX get 25% lower fees. The discount drives accumulation.",
   },
   {
-    icon:    "/images/r39-asset-staking-lock-transparent.webp",
+    icon:    "/images/r79-asset-staking-lock-bright-transparent.webp",
     iconAlt: "Literal lock  --  staking rewards",
     title:   "Staking",
     body:    "Lock LP tokens and $APPEX together to stake. Stakers receive protocol fees and boost their yield.",
@@ -142,7 +142,7 @@ export function AppexUtilitySection(): React.JSX.Element {
 
         .appex-utility__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -274,7 +274,7 @@ export function AppexUtilitySection(): React.JSX.Element {
       >
         {/* Scene image: r23-scene-token-utility.png at 100% opacity */}
         <Image
-          src="/images/r23-scene-token-utility.png"
+          src="/images/r23-scene-token-utility.webp"
           alt="" aria-hidden="true"
           fill
           className="appex-utility__scene"
@@ -301,7 +301,7 @@ export function AppexUtilitySection(): React.JSX.Element {
           {/* Floating token accent  --  translateY ONLY, explicitly no rotation */}
           <div className="appex-utility__token-wrap">
             <Image
-              src="/images/r22-appex-token-edited-transparent.webp"
+              src="/images/r22-appex-token-bright-transparent.webp"
               alt="appeX token with logomark"
               width={280}
               height={280}

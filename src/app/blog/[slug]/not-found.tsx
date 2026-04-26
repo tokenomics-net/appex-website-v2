@@ -25,7 +25,7 @@ export default function PostNotFound() {
       <p
         style={{
           fontFamily: "var(--font-display-family, system-ui)",
-          fontSize: "11px",
+          fontSize: "14px",
           fontWeight: 400,
           letterSpacing: "3px",
           textTransform: "uppercase",

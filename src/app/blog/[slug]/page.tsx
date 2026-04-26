@@ -43,22 +43,26 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const post = getPostBySlug(slug);
-  if (!post) return { title: "Post not found | appeX Blog" };
+  if (!post) return { title: "Post not found" };
 
   const { frontmatter } = post;
-  const title = frontmatter.seoTitle ?? `${frontmatter.title} | appeX Blog`;
+  const title = frontmatter.seoTitle ?? frontmatter.title;
   const description =
     frontmatter.seoDescription ?? frontmatter.excerpt.slice(0, 155);
   const ogImage = frontmatter.ogImage ?? frontmatter.cover;
   const absoluteOg = ogImage.startsWith("http") ? ogImage : `${BASE_URL}${ogImage}`;
   const postUrl = `${BASE_URL}/blog/${frontmatter.slug}`;
 
-  // og-cards.md: title = "[Post title] | appeX Blog", desc = first ~140 chars lede-style
+  // og-cards.md: social title carries explicit brand since OG bypasses the root template
+  const socialTitle = `${title} | appeX Protocol`;
   return {
     title,
     description,
+    alternates: {
+      canonical: postUrl,
+    },
     openGraph: {
-      title:             title,
+      title:             socialTitle,
       description:       description,
       type:              "article",
       url:               postUrl,
@@ -71,7 +75,7 @@ export async function generateMetadata({
     twitter: {
       card:        "summary_large_image",
       site:        "@appexprotocol",
-      title,
+      title:       socialTitle,
       description,
       images:      [absoluteOg],
     },

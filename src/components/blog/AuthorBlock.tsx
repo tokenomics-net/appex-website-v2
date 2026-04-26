@@ -61,7 +61,7 @@ export function AuthorBlock(): React.JSX.Element {
           align-items: center;
           white-space: nowrap;
           font-family: var(--font-display-family, system-ui);
-          font-size: 12px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;

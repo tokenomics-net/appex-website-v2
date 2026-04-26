@@ -10,9 +10,9 @@
  * Scene: r21-scene-solution-chamber.webp at 100% (Option B glassmorphism, same as Home S3)
  * Inner texture: r17-texture-rhythm.png at 12% opacity inside glass panel
  * Assets (CORRECTED, matching Home S3):
- *   Step 1: r21-asset-deposit-pour-transparent.webp
- *   Step 2: r22-step-fund-draw-transparent.webp
- *   Step 3: r19-asset-yield-curve-wedge-transparent.webp
+ *   Step 1: r65-asset-deposit-pour-bright-transparent.webp
+ *   Step 2: r81-asset-step-fund-draw-bright-transparent.webp
+ *   Step 3: r44-asset-yield-curve-wedge-bright-transparent.webp
  *
  * Bug fix (Rev 3): Tab buttons now have glass treatment with visible borders,
  *   explicit active/inactive states, and 48px minimum hit targets.
@@ -53,7 +53,7 @@ const STEPS: StepData[] = [
     ],
     code:          "vault.deposit(usdc) \u2192 mint(lpTokens)",
     codeColor:     "rgba(254,214,7,0.65)",
-    asset:         "/images/r21-asset-deposit-pour-transparent.webp",
+    asset:         "/images/r65-asset-deposit-pour-bright-transparent.webp",
     assetAlt:      "Magma-core pour form: capital flowing into the vault",
     glowColor:     "radial-gradient(ellipse 900px 500px at 70% 50%, rgba(90,28,203,0.22) 0%, transparent 65%)",
     crossLinkLabel: "LP details",
@@ -72,7 +72,7 @@ const STEPS: StepData[] = [
     ],
     code:          "borrower.draw(amount) \u2192 receivable.create",
     codeColor:     "rgba(185,160,204,0.65)",
-    asset:         "/images/r22-step-fund-draw-transparent.webp",
+    asset:         "/images/r81-asset-step-fund-draw-bright-transparent.webp",
     assetAlt:      "Y-shaped conduit showing dual USDC and $APPEX payout outputs",
     glowColor:     "radial-gradient(ellipse 900px 500px at 70% 50%, rgba(90,28,203,0.18) 0%, rgba(254,214,7,0.08) 45%, transparent 70%)",
     crossLinkLabel: "Borrower details",
@@ -91,7 +91,7 @@ const STEPS: StepData[] = [
     ],
     code:          "repay(principal + fees) \u2192 nav.increase",
     codeColor:     "rgba(254,214,7,0.65)",
-    asset:         "/images/r19-asset-yield-curve-wedge-transparent.webp",
+    asset:         "/images/r44-asset-yield-curve-wedge-bright-transparent.webp",
     assetAlt:      "Yield curve wedge: accruing fees rise with each repayment cycle",
     glowColor:     "radial-gradient(ellipse 900px 500px at 70% 50%, rgba(254,214,7,0.18) 0%, rgba(90,28,203,0.10) 45%, transparent 70%)",
     crossLinkLabel: "About $APPEX",
@@ -237,7 +237,7 @@ export function ProtocolSteps(): React.JSX.Element {
 
         .proto-steps__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -319,7 +319,7 @@ export function ProtocolSteps(): React.JSX.Element {
         /* Label below circle */
         .pstep-btn__label {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -395,7 +395,7 @@ export function ProtocolSteps(): React.JSX.Element {
         /* Copy column */
         .pstep-panel__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -452,6 +452,8 @@ export function ProtocolSteps(): React.JSX.Element {
           .pstep-panel__bullet { animation: none; opacity: 1; transform: none; }
         }
 
+        /* Mobile audit exception: 12px retained -- monospace inline code block.
+         * Smaller size is typographic convention for code; not body prose. */
         .pstep-panel__code {
           font-family: var(--font-mono-family);
           font-size: 12px;
@@ -500,7 +502,7 @@ export function ProtocolSteps(): React.JSX.Element {
           <div className="proto-steps__glass">
             {/* Inner texture */}
             <Image
-              src="/images/r17-texture-rhythm.png"
+              src="/images/r17-texture-rhythm.webp"
               alt="" aria-hidden="true"
               fill
               className="proto-steps__texture"

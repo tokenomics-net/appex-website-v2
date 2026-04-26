@@ -267,7 +267,7 @@ export function HeroSection(): React.JSX.Element {
         /* Meta line */
         .hero-bleed__meta {
           font-family: var(--font-mono-family);
-          font-size: 12px;
+          font-size: 14px;
           color: var(--ax-capital-yellow);
           opacity: 0.65;
           margin: 0 0 40px 0;
@@ -298,6 +298,14 @@ export function HeroSection(): React.JSX.Element {
           border: 1px solid rgba(255,255,255,0.15);
           color: var(--text-secondary);
           transition: color 250ms ease, border-color 250ms ease, background 250ms ease;
+        }
+
+        /* iOS 44px minimum touch target on mobile */
+        @media (max-width: 767px) {
+          .hero-social-icon {
+            width: 44px;
+            height: 44px;
+          }
         }
 
         .hero-social-icon:hover {
@@ -353,7 +361,7 @@ export function HeroSection(): React.JSX.Element {
 
         {/* Floating token  --  desktop: absolute right side */}
         <Image
-          src="/images/r22-appex-token-edited-transparent.webp"
+          src="/images/r22-appex-token-bright-transparent.webp"
           alt="appeX token with logomark"
           width={550}
           height={400}
@@ -367,7 +375,7 @@ export function HeroSection(): React.JSX.Element {
           <div className="hero-bleed__content">
             {/* Mobile token  --  centered above headline, shown only on mobile via CSS */}
             <Image
-              src="/images/r22-appex-token-edited-transparent.webp"
+              src="/images/r22-appex-token-bright-transparent.webp"
               alt="appeX token with logomark"
               width={250}
               height={250}

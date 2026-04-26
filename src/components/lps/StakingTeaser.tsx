@@ -180,7 +180,7 @@ export function StakingTeaser(): React.JSX.Element {
 
         .staking-teaser__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -206,6 +206,8 @@ export function StakingTeaser(): React.JSX.Element {
           margin: 0;
         }
 
+        /* Mobile audit exception: 11px retained -- italic legal disclaimer at 55%
+         * opacity below staking teaser. Not body content; de-emphasis is intentional. */
         .staking-teaser__disclaimer {
           font-family: var(--font-body-family);
           font-size: 11px;
@@ -267,7 +269,7 @@ export function StakingTeaser(): React.JSX.Element {
         aria-labelledby="staking-teaser-heading"
       >
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           sizes="100vw"
@@ -285,7 +287,7 @@ export function StakingTeaser(): React.JSX.Element {
             {/* Asset column  --  new bespoke staking-pair disc */}
             <div className="staking-teaser__asset-col">
               <Image
-                src="/images/r22-appex-token-edited-transparent.webp"
+                src="/images/r22-appex-token-bright-transparent.webp"
                 alt="The $APPEX token  --  stake to earn protocol fees and boost yield"
                 width={220}
                 height={220}

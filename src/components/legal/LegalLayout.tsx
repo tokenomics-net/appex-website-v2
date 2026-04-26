@@ -31,6 +31,7 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           min-height: 100vh;
           background: var(--ax-fortress);
           padding: 80px 24px 120px;
+          overflow-x: hidden;
         }
 
         .legal-page__inner {
@@ -38,13 +39,13 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           margin: 0 auto;
         }
 
-        /* Back link */
+        /* Back link. Mobile audit: bumped from 13px to 14px minimum. */
         .legal-page__back {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 500;
           color: var(--ax-ether-mist);
           text-decoration: none;
@@ -74,9 +75,10 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           margin: 0 0 8px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .legal-page__effective {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary);
           margin: 0 0 48px;
         }
@@ -150,6 +152,8 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           font-size: 14px;
         }
 
+        /* Mobile audit exception: 12px retained -- uppercase small-caps table column
+         * header inside legal table. Not readable prose; equivalent to axis label. */
         .legal-prose th {
           text-align: left;
           font-family: var(--font-display-family);
@@ -168,6 +172,8 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           vertical-align: top;
         }
 
+        /* Mobile audit exception: 13px retained for code elements -- monospace
+         * inline code in legal text uses smaller size by typographic convention. */
         .legal-prose code {
           font-family: var(--font-mono, 'Courier New', monospace);
           font-size: 13px;
@@ -183,7 +189,7 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
          * Tony sees what needs client confirmation. When confirmed, swap the string.
          */
         .legal-prose .pending {
-          display: inline-block;
+          display: inline;
           background: rgba(254,214,7,0.18);
           border: 1px solid rgba(254,214,7,0.45);
           border-radius: 3px;
@@ -192,16 +198,20 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           font-size: 0.9em;
           font-style: italic;
           color: var(--ax-capital-yellow);
-          white-space: nowrap;
+          /* white-space: nowrap REMOVED -- caused full-page x-overflow on mobile
+             when pending spans contain multi-sentence placeholder text. */
+          white-space: normal;
+          word-break: break-word;
         }
 
-        /* Footer note at bottom of legal page */
+        /* Footer note at bottom of legal page.
+         * Mobile audit: bumped from 13px to 14px minimum. */
         .legal-page__footer-note {
           margin-top: 64px;
           padding-top: 24px;
           border-top: 1px solid var(--ax-fortress-border);
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           color: var(--ax-text-tertiary);
         }
 
@@ -210,6 +220,10 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
             padding: 60px 20px 80px;
           }
 
+          /* Mobile audit exception: 13px retained in table context at <640px --
+           * legal tables use smaller type to maintain columnar data legibility
+           * within constrained mobile width. The outer prose is 16px so
+           * this is a relative reduction for data density, not body content. */
           .legal-prose table {
             font-size: 13px;
           }
@@ -232,7 +246,6 @@ export function LegalLayout({ title, children }: LegalLayoutProps): React.JSX.El
           </Link>
 
           <h1 className="legal-page__title">{title}</h1>
-          <p className="legal-page__effective">Effective date: April 17, 2026</p>
           <div className="legal-page__divider" aria-hidden="true" />
 
           <div className="legal-prose">

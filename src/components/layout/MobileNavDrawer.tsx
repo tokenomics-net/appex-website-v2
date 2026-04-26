@@ -101,21 +101,25 @@ export function MobileNavDrawer({ config, isOpen, onClose }: MobileNavDrawerProp
           gap: 12px;
           margin-bottom: 32px;
         }
+        /* Mobile audit: background changed from ax-fortress (dark-on-dark, invisible) to
+         * ax-capital-yellow (gold) with ax-fortress text -- matches primary button tier.
+         * Font bumped from 13px to 14px minimum. */
         .mobile-drawer__cta-solid {
           display: flex;
           align-items: center;
           justify-content: center;
           height: 48px;
-          background: var(--ax-fortress);
-          color: var(--ax-capital-yellow);
+          background: var(--ax-capital-yellow);
+          color: var(--ax-fortress);
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.1em;
           text-transform: uppercase;
           text-decoration: none;
           border-radius: 4px;
         }
+        /* Mobile audit: font bumped from 13px to 14px minimum. */
         .mobile-drawer__cta-ghost {
           display: flex;
           align-items: center;
@@ -125,7 +129,7 @@ export function MobileNavDrawer({ config, isOpen, onClose }: MobileNavDrawerProp
           border: 1px solid var(--ax-node-purple);
           color: var(--ax-node-purple);
           font-family: var(--font-display-family);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 0.1em;
           text-transform: uppercase;

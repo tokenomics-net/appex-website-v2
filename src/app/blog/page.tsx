@@ -28,13 +28,13 @@ import { PostGrid }      from "@/components/blog/PostGrid";
 import { FollowBand }    from "@/components/blog/FollowBand";
 
 export const metadata: Metadata = {
-  title:       "appeX Blog | Protocol research and analysis",
+  title:       "Protocol research and analysis",
   description: "Protocol-level writing from the appeX team on real yield, credit underwriting onchain, and the architecture behind the vault.",
   alternates: {
     canonical: `${BASE_URL}/blog`,
   },
   openGraph: {
-    title:       "appeX Blog | Protocol research and analysis",
+    title:       "Protocol research and analysis | appeX Protocol",
     description: "Protocol-level writing from the appeX team on real yield, credit underwriting onchain, and the architecture behind the vault.",
     type:        "website",
     url:         `${BASE_URL}/blog`,
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   twitter: {
     card:        "summary_large_image",
     site:        "@appexprotocol",
-    title:       "appeX Blog | Protocol research and analysis",
+    title:       "Protocol research and analysis | appeX Protocol",
     description: "Protocol-level writing from the appeX team on real yield, credit underwriting onchain, and the architecture behind the vault.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
 };
 

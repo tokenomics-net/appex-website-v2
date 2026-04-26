@@ -77,7 +77,7 @@ export function BlogHero(): React.JSX.Element {
         /* Left column */
         .blog-hero__eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;

@@ -61,7 +61,7 @@ export function FollowBand(): React.JSX.Element {
 
         .follow-band__eyebrow {
           font-family: var(--font-display-family, system-ui);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 3px;
@@ -96,11 +96,12 @@ export function FollowBand(): React.JSX.Element {
           align-items: center;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .follow-band__rss-link {
           display: inline-flex;
           align-items: center;
           font-family: var(--font-display-family, system-ui);
-          font-size: 13px;
+          font-size: 14px;
           font-weight: 400;
           text-transform: uppercase;
           letter-spacing: 2px;
@@ -128,10 +129,11 @@ export function FollowBand(): React.JSX.Element {
 
       <section id="follow" className="follow-band">
         <Image
-          src="/images/r18-texture-horizon.png"
+          src="/images/r18-texture-horizon.webp"
           alt="" aria-hidden="true"
           fill
           className="follow-band__texture"
+          loading="lazy"
         />
         <div className="follow-band__overlay" aria-hidden="true" />
 

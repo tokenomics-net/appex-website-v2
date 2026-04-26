@@ -7,9 +7,9 @@
  * NO progress bar. NO auto-advance. NO stepper. NO useState. NO useEffect.
  * Hourglass DELETED per Tony (r21-asset-instant-payout-transparent.webp removed entirely).
  * Assets:
- *   Card 1 "The revenue gap":    r22-step-gap-transparent.webp     (NEW)
- *   Card 2 "The vault closes it": r22-step-bridge-transparent.webp  (NEW)
- *   Card 3 "The repayment cycle": r21-step-repayment-cycle-transparent.webp (KEPT per Tony)
+ *   Card 1 "The revenue gap":    r67-asset-step-gap-bright-transparent.webp     (NEW)
+ *   Card 2 "The vault closes it": r60-asset-step-bridge-bright-transparent.webp  (NEW)
+ *   Card 3 "The repayment cycle": r70-asset-step-repayment-cycle-r5n-bright-transparent.webp
  * Eyebrow: "Anchor Borrower" per home.md
  * Body: expanded ~97 word copy from home.md, PRESENT TENSE (exception: appLockr future framing)
  * Background: r17-texture-rhythm.png at 20% opacity + directional gradient overlay
@@ -30,21 +30,21 @@ interface CardData {
 const CARDS: CardData[] = [
   {
     number: "01",
-    graphic: "/images/r22-step-gap-transparent.webp",
+    graphic: "/images/r67-asset-step-gap-bright-transparent.webp",
     graphicAlt: "Split blocks with luminous gap representing the revenue timing gap",
     headline: "The revenue gap",
     body: "App developers earn revenue the moment an ad runs but wait weeks or months to get paid. That is a working capital problem.",
   },
   {
     number: "02",
-    graphic: "/images/r22-step-bridge-transparent.webp",
+    graphic: "/images/r60-asset-step-bridge-bright-transparent.webp",
     graphicAlt: "Bridge form closing the capital gap between earned and received cash",
     headline: "The vault closes it",
     body: "appLockr draws from the vault and pays app developers same-day in $APPEX or USDC.",
   },
   {
     number: "03",
-    graphic: "/images/r21-step-repayment-cycle-transparent.webp",
+    graphic: "/images/r70-asset-step-repayment-cycle-r5n-bright-transparent.webp",
     graphicAlt: "Torus with directional flow channel representing capital returning to LPs",
     headline: "The repayment cycle",
     body: "When advertiser revenue arrives on commercial terms, appLockr repays the vault with fees. LPs earn from those fees.",
@@ -134,7 +134,7 @@ export function AppLockrSection(): React.JSX.Element {
 
         .applockr__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 600;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -231,7 +231,9 @@ export function AppLockrSection(): React.JSX.Element {
           width: 100%;
         }
 
-        /* Step number eyebrow */
+        /* Step number eyebrow.
+         * Mobile audit exception: 13px retained -- UI ordinal chip ("01", "02", "03"),
+         * not readable body content. opacity: 0.45 is intentional de-emphasis. */
         .applockr__card-number {
           font-family: var(--font-display-family);
           font-size: 13px;
@@ -311,7 +313,7 @@ export function AppLockrSection(): React.JSX.Element {
       <section className="applockr" aria-labelledby="applockr-heading">
         {/* Layer 0: brand texture */}
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           className="applockr__texture"
@@ -343,7 +345,7 @@ export function AppLockrSection(): React.JSX.Element {
               <div key={card.number} className="applockr__card">
                 {/* Inner card texture */}
                 <Image
-                  src="/images/r17-texture-rhythm.png"
+                  src="/images/r17-texture-rhythm.webp"
                   alt="" aria-hidden="true"
                   fill
                   className="applockr__card-texture"

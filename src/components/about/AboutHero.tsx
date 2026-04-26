@@ -150,7 +150,7 @@ export function AboutHero(): React.JSX.Element {
         /* Eyebrow */
         .about-hero__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -338,7 +338,7 @@ export function AboutHero(): React.JSX.Element {
 
         {/* Floating hero asset  --  principled foundation marker */}
         <Image
-          src="/images/r39-asset-about-hero-floater-transparent.webp"
+          src="/images/r41-asset-about-hero-floater-bright-transparent.webp"
           alt="decentralized peer-node lattice"
           width={420}
           height={420}

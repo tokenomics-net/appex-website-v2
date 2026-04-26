@@ -86,7 +86,7 @@ export const metadata: Metadata = {
     site:        "@appexprotocol",
     title:       "appeX Protocol | Onchain Financing Infrastructure",
     description: "appeX closes the gap between earned revenue and received cash. LPs deposit USDC and earn from borrower fees. Approved borrowers draw capital from the vault.",
-    images:      [`${BASE_URL}/og-default.png`],
+    images:      [OG_IMAGE.url],
   },
   manifest: "/site.webmanifest",
   robots: {
@@ -122,10 +122,10 @@ export default function RootLayout({
 
         <SiteFooter />
 
-        {process.env.NEXT_PUBLIC_GA_ID && (
+        {process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID && (
           <>
             <Script
-              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
+              src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}`}
               strategy="afterInteractive"
             />
             <Script id="ga-init" strategy="afterInteractive">
@@ -133,7 +133,7 @@ export default function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${process.env.NEXT_PUBLIC_GA_ID}');
+                gtag('config', '${process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID}');
               `}
             </Script>
           </>

@@ -16,10 +16,10 @@
  * Stepper glass panel: background rgba(10,15,31,0.78), backdrop-filter blur(12px),
  *   border rgba(255,255,255,0.08), border-radius var(--radius-md), padding 48px.
  * Per-step floating assets (ALL REUSE):
- *   Step 1 Deposit:      r21-asset-deposit-pour-transparent.webp
- *   Step 2 Accrue:       r19-asset-yield-curve-wedge-transparent.webp
- *   Step 3 Idle deploys: r19-asset-momentum-wave-transparent.webp
- *   Step 4 Redeem:       r19-asset-redemption-gate-arch-transparent.webp
+ *   Step 1 Deposit:      r65-asset-deposit-pour-bright-transparent.webp
+ *   Step 2 Accrue:       r44-asset-yield-curve-wedge-bright-transparent.webp
+ *   Step 3 Idle deploys: r48-asset-momentum-wave-bright-transparent.webp
+ *   Step 4 Redeem:       r47-asset-redemption-gate-arch-bright-transparent.webp
  * Floating assets: translateY 6-10px / 4-6s ease-in-out. NO rotation. opacity: 1 always.
  * Copy: copy/lps.md Section 4. Present tense. No em dashes.
  */
@@ -47,7 +47,7 @@ const STEPS: LifecycleStep[] = [
     heading:  "USDC in, LP tokens out.",
     body:     "Connect a wallet and specify a USDC amount. The vault refreshes NAV, calculates the current share price, and mints LP tokens to your wallet. The minimum is one USDC. Access is permissionless at the contract level.",
     bullet:   "ERC-20 LP tokens, transferable and redeemable against vault NAV.",
-    asset:    "/images/r21-asset-deposit-pour-transparent.webp",
+    asset:    "/images/r65-asset-deposit-pour-bright-transparent.webp",
     floatDur: "4.5s",
     glowStyle: {
       background: "radial-gradient(ellipse 900px 500px at 55% 50%, rgba(90,28,203,0.20) 0%, rgba(254,214,7,0.10) 45%, transparent 65%)",
@@ -60,7 +60,7 @@ const STEPS: LifecycleStep[] = [
     heading:  "Yield accrues daily, not quarterly.",
     body:     "The LP yield fee accrues to NAV every day the advance is outstanding, not in a lump sum at repayment. LP token value rises continuously. No claim, no harvest, no gas. Staking rewards distribute monthly, aligned with typical borrower repayment cycles.",
     bullet:   "Monthly staking cadence is qualitative. Specific timing is not committed.",
-    asset:    "/images/r19-asset-yield-curve-wedge-transparent.webp",
+    asset:    "/images/r44-asset-yield-curve-wedge-bright-transparent.webp",
     floatDur: "5s",
     glowStyle: {
       background: "radial-gradient(ellipse 900px 500px at 55% 50%, rgba(90,28,203,0.20) 0%, rgba(254,214,7,0.10) 45%, transparent 65%)",
@@ -73,7 +73,7 @@ const STEPS: LifecycleStep[] = [
     heading:  "Undrawn capital still earns.",
     body:     "USDC not in an active advance goes to Aave for continuous DeFi yield. The position is fully liquid and withdrawable instantly. Borrower demand and DeFi allocation are managed together to keep redemption capacity intact.",
     bullet:   "Deployment protocols are governance-approved and can be rotated.",
-    asset:    "/images/r19-asset-momentum-wave-transparent.webp",
+    asset:    "/images/r48-asset-momentum-wave-bright-transparent.webp",
     floatDur: "5.5s",
     glowStyle: {
       background: "radial-gradient(ellipse 900px 500px at 55% 50%, rgba(90,28,203,0.20) 0%, rgba(254,214,7,0.10) 45%, transparent 65%)",
@@ -86,7 +86,7 @@ const STEPS: LifecycleStep[] = [
     heading:  "Exit through the redemption gates.",
     body:     "Submit a withdrawal request. If the liquid DeFi position covers the amount, the request settles promptly once the gate releases. If not, the request queues FIFO until repayments land. Daily caps and per-request limits apply. The vault never recalls outstanding advances.",
     bullet:   "Settlement timing is qualitative. Wiki phrasing is preserved.",
-    asset:    "/images/r19-asset-redemption-gate-arch-transparent.webp",
+    asset:    "/images/r47-asset-redemption-gate-arch-bright-transparent.webp",
     floatDur: "6s",
     glowStyle: {
       background: "radial-gradient(ellipse 900px 500px at 55% 50%, rgba(90,28,203,0.20) 0%, rgba(254,214,7,0.10) 45%, transparent 65%)",
@@ -184,7 +184,7 @@ export function LPLifecycle(): React.JSX.Element {
 
         .lp-lifecycle__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -299,7 +299,7 @@ export function LPLifecycle(): React.JSX.Element {
 
         .lp-lifecycle__tab-label {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 1.5px;
           text-transform: uppercase;
@@ -373,7 +373,7 @@ export function LPLifecycle(): React.JSX.Element {
         /* Copy column */
         .lp-lifecycle__step-label {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 2px;
           text-transform: uppercase;
@@ -399,9 +399,10 @@ export function LPLifecycle(): React.JSX.Element {
           margin: 0 0 20px 0;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .lp-lifecycle__step-bullet {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.5;
           color: var(--text-secondary);
           padding: 10px 14px;
@@ -503,7 +504,7 @@ export function LPLifecycle(): React.JSX.Element {
         aria-labelledby="lp-lifecycle-heading"
       >
         <Image
-          src="/images/r17-texture-rhythm.png"
+          src="/images/r17-texture-rhythm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"
@@ -530,7 +531,7 @@ export function LPLifecycle(): React.JSX.Element {
           {/* Glassmorphism stepper panel */}
           <div className="lp-lifecycle__glass">
             <Image
-              src="/images/r17-texture-rhythm.png"
+              src="/images/r17-texture-rhythm.webp"
               alt="" aria-hidden="true"
               fill
               sizes="1280px"

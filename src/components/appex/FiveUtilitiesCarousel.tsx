@@ -49,7 +49,7 @@ const UTILITIES: UtilityCard[] = [
       "Demand scales with borrower volume, not marketing spend",
       "No fees charged to recipients",
     ],
-    heroAsset:   "/images/r22-appex-token-edited-transparent.webp",
+    heroAsset:   "/images/r22-appex-token-bright-transparent.webp",
     heroAlt:     "The branded $APPEX token representing the mechanical market buy on every payout",
   },
   {
@@ -63,7 +63,7 @@ const UTILITIES: UtilityCard[] = [
       "Eligibility capped by locked LP tokens, not wallet size",
       "Rewards originate from borrower activity, not new issuance",
     ],
-    heroAsset:   "/images/r39-asset-staking-lock-transparent.webp",
+    heroAsset:   "/images/r79-asset-staking-lock-bright-transparent.webp",
     heroAlt:     "Literal lock  --  staking rewards",
   },
   {
@@ -77,7 +77,7 @@ const UTILITIES: UtilityCard[] = [
       "$150 in $APPEX versus $200 in USDC on a 2% fee, $10K advance",
       "LP yield fee is unaffected and always paid in USDC",
     ],
-    heroAsset:   "/images/r22-util-lower-fees-transparent.webp",
+    heroAsset:   "/images/r62-asset-util-lower-fees-bright-transparent.webp",
     heroAlt:     "Lower-fees utility form representing protocol fee discount for $APPEX payment",
   },
   {
@@ -91,8 +91,8 @@ const UTILITIES: UtilityCard[] = [
       "Recipients spend $APPEX on partner platforms at discounted rates",
       "Borrowers accumulate $APPEX through platform revenue",
     ],
-    heroAsset:   "/images/r19-icon-platform-utility-transparent.webp",
-    heroAlt:     "Platform utility icon representing $APPEX accepted across partner platforms",
+    heroAsset:   "/images/r86-asset-token-constellation-bright-transparent.webp",
+    heroAlt:     "Orb-style token constellation representing $APPEX accepted across partner platforms",
   },
   {
     id:          "governance",
@@ -105,7 +105,7 @@ const UTILITIES: UtilityCard[] = [
       "Five decision scopes, starting with vault and borrower parameters",
       "No drive-by votes from passive holders",
     ],
-    heroAsset:   "/images/r19-asset-governance-quorum-ring-transparent.webp",
+    heroAsset:   "/images/r45-asset-governance-quorum-ring-bright-transparent.webp",
     heroAlt:     "Governance quorum ring representing one-token-one-vote staking governance",
   },
 ];
@@ -117,6 +117,8 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
   const isDragging                  = useRef<boolean>(false);
   const dragStartX                  = useRef<number>(0);
   const scrollStart                 = useRef<number>(0);
+  // Stable ref so keyboard handler registered once ([] deps) always sees current dot
+  const activeDotRef                = useRef<number>(0);
 
   // IntersectionObserver drives dot state and pill counter
   useEffect((): (() => void) => {
@@ -142,26 +144,30 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
     return (): void => observer.disconnect();
   }, []);
 
-  // Keyboard navigation
-  useEffect((): (() => void) => {
-    const onKey = (e: KeyboardEvent): void => {
-      if (e.key === "ArrowLeft") {
-        scrollToCard(Math.max(activeDot - 1, 0));
-      } else if (e.key === "ArrowRight") {
-        scrollToCard(Math.min(activeDot + 1, UTILITIES.length - 1));
-      }
-    };
-    window.addEventListener("keydown", onKey);
-    return (): void => window.removeEventListener("keydown", onKey);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeDot]);
-
   const scrollToCard = useCallback((idx: number): void => {
     const card = cardRefs.current[idx];
     if (card) {
       card.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
     }
   }, []);
+
+  // Keep ref in sync so keyboard handler always reads current dot without re-registering
+  useEffect((): void => { activeDotRef.current = activeDot; }, [activeDot]);
+
+  // Keyboard navigation -- registered once ([] deps) via stable ref to avoid
+  // teardown/re-registration on every dot change (eliminates first-keypress lag)
+  useEffect((): (() => void) => {
+    const onKey = (e: KeyboardEvent): void => {
+      if (e.key === "ArrowLeft") {
+        scrollToCard(Math.max(activeDotRef.current - 1, 0));
+      } else if (e.key === "ArrowRight") {
+        scrollToCard(Math.min(activeDotRef.current + 1, UTILITIES.length - 1));
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return (): void => window.removeEventListener("keydown", onKey);
+  // scrollToCard is stable (useCallback with [] deps) -- safe to include
+  }, [scrollToCard]);
 
   const handleMouseDown = useCallback((e: React.MouseEvent): void => {
     const track = trackRef.current;
@@ -260,7 +266,7 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
 
         .util-carousel__eyebrow {
           font-family: var(--font-display-family);
-          font-size: 11px;
+          font-size: 14px;
           font-weight: 500;
           letter-spacing: 3px;
           text-transform: uppercase;
@@ -302,7 +308,9 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
           }
         }
 
-        /* Live scroll-hint pill */
+        /* Live scroll-hint pill.
+         * Mobile audit exception: 11px retained -- this is a UI affordance indicator
+         * (scroll hint), not body content. Small size is intentional for de-emphasis. */
         .util-carousel__pill {
           display: inline-flex;
           align-items: center;
@@ -392,6 +400,7 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
           -webkit-overflow-scrolling: touch;
           margin-left: -48px;
           margin-right: -48px;
+          will-change: scroll-position; /* primes compositor before first drag -- eliminates geometry-resolution cost on cold first scroll */
         }
 
         .util-carousel__track::-webkit-scrollbar { display: none; }
@@ -570,6 +579,8 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
           }
         }
 
+        /* Mobile audit exception: 11px retained -- UI ordinal indicator ("01 of 05"),
+         * not body content. Letter-spacing + uppercase provides adequate legibility. */
         .util-card__num-label {
           font-family: var(--font-display-family);
           font-size: 11px;
@@ -589,9 +600,10 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
           margin: 0;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .util-card__body {
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.55;
           color: var(--text-secondary);
           margin: 0;
@@ -606,12 +618,13 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
           gap: 6px;
         }
 
+        /* Mobile audit: bumped from 13px to 14px minimum. */
         .util-card__bullet {
           display: flex;
           align-items: flex-start;
           gap: 8px;
           font-family: var(--font-body-family);
-          font-size: 13px;
+          font-size: 14px;
           line-height: 1.45;
           color: var(--text-secondary);
         }
@@ -666,7 +679,7 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
         aria-labelledby="util-carousel-heading"
       >
         <Image
-          src="/images/r17-texture-calm.png"
+          src="/images/r17-texture-calm.webp"
           alt="" aria-hidden="true"
           fill
           sizes="(max-width: 767px) 50vw, 540px"
@@ -735,7 +748,7 @@ export function FiveUtilitiesCarousel(): React.JSX.Element {
                 >
                   {/* Shared background texture  --  r17-texture-grounding at 0.35 (all 5 cards) */}
                   <Image
-                    src="/images/r17-texture-grounding.png"
+                    src="/images/r17-texture-grounding.webp"
                     alt="" aria-hidden="true"
                     fill
                     sizes="560px"
